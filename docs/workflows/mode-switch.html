@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 模式切换流程 - Amazing</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .permission-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        .permission-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .workflow-step {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .step-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .command-box {
+            background: #2d2d2d;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .role-tag {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px 5px 5px 0;
+        }
+        .architect-tag {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .tip-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .error-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .mode-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .mode-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+        }
+        .mode-title {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .flow-diagram {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+        }
+        .flow-step {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .flow-arrow {
+            text-align: center;
+            color: #667eea;
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        tr:hover {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 AI 模式切换流程</h1>
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="../index.html" style="color: #667eea; text-decoration: none; font-size: 1.1em;">← 返回主页</a> |
+            <a href="system-architecture.html" style="color: #764ba2; text-decoration: none; font-size: 1.1em;">📦 系统架构</a>
+        </div>
+
+        <!-- 权限说明 -->
+        <div class="permission-box">
+            <div class="permission-title">⚠️ 权限要求</div>
+            <p style="font-size: 1.1em; margin-bottom: 10px;">
+                <strong>只有架构师 (Architect) 有权限切换 AI 模式</strong>
+            </p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>✅ 架构师：拥有完整的模式切换权限</li>
+                <li>❌ 产品经理、开发、测试、运维：无权切换模式</li>
+                <li>📝 所有切换操作都会被记录和审计</li>
+                <li>🔗 模式切换需要关联具体需求ID</li>
+            </ul>
+        </div>
+
+        <!-- 模式对比 -->
+        <h2 style="color: #667eea; margin-top: 40px;">模式对比</h2>
+        <div class="mode-comparison">
+            <div class="mode-card">
+                <div class="mode-title">🤖 全自动模式 (Full-Auto)</div>
+                <p><strong>AI 角色：</strong>执行者</p>
+                <p><strong>人工角色：</strong>监督者</p>
+                <p><strong>决策权：</strong>AI 自主决策</p>
+                <p><strong>执行权：</strong>AI 自动执行</p>
+                <p><strong>适用场景：</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>成熟流程</li>
+                    <li>低风险任务</li>
+                    <li>Bug 修复</li>
+                    <li>代码重构</li>
+                </ul>
+            </div>
+            <div class="mode-card">
+                <div class="mode-title">👨‍💻 半自动模式 (Semi-Auto)</div>
+                <p><strong>AI 角色：</strong>辅助者</p>
+                <p><strong>人工角色：</strong>决策者</p>
+                <p><strong>决策权：</strong>人工决策</p>
+                <p><strong>执行权：</strong>人工批准后执行</p>
+                <p><strong>适用场景：</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>新项目启动</li>
+                    <li>高风险任务</li>
+                    <li>架构设计</li>
+                    <li>技术选型</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 切换流程 -->
+        <h2 style="color: #667eea; margin-top: 40px;">完整切换流程</h2>
+
+        <!-- 步骤 1 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                切换到架构师角色
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <p style="margin: 15px 0;">首先需要切换到架构师角色，只有架构师才有权限切换模式。</p>
+            <div class="command-box">$ python3 scripts/amazing-cli.py role set architect</div>
+            <div class="success-box">
+                <strong>✅ 角色切换成功</strong><br>
+                当前角色: 架构师 (Architect)
+            </div>
+        </div>
+
+        <!-- 步骤 2 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                评估需求
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <p style="margin: 15px 0;">架构师评估需求的复杂度、风险等级，决定使用哪种模式。</p>
+            <div class="tip-box">
+                <strong>💡 评估维度：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>技术复杂度：</strong>高/中/低</li>
+                    <li><strong>业务风险：</strong>高/中/低</li>
+                    <li><strong>团队熟悉度：</strong>熟悉/一般/不熟悉</li>
+                    <li><strong>时间要求：</strong>紧急/正常/宽松</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 3 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                执行模式切换
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <p style="margin: 15px 0;">使用 CLI 命令切换模式，需要提供需求ID和切换原因。</p>
+
+            <p style="margin-top: 20px;"><strong>切换到全自动模式：</strong></p>
+            <div class="command-box">$ python3 scripts/mode_cli.py mode set full-auto \<br>  -r REQ-001 \<br>  --reason "成熟功能，团队熟悉，风险可控"</div>
+
+            <p style="margin-top: 20px;"><strong>切换到半自动模式：</strong></p>
+            <div class="command-box">$ python3 scripts/mode_cli.py mode set semi-auto \<br>  -r REQ-002 \<br>  --reason "新项目，需要人工把关"</div>
+        </div>
+
+        <!-- 步骤 4 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">4</span>
+                系统验证权限
+            </div>
+            <div class="role-tag">系统</div>
+            <p style="margin: 15px 0;">系统自动验证用户是否有权限切换模式。</p>
+
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <strong>检查用户角色</strong><br>
+                    读取 .claude/user.json 文件
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">
+                    <strong>验证权限</strong><br>
+                    role === "architect" ?
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div style="background: #d4edda; padding: 10px; border-radius: 4px;">
+                        <strong>✅ 是架构师</strong><br>
+                        继续执行
+                    </div>
+                    <div style="background: #f8d7da; padding: 10px; border-radius: 4px;">
+                        <strong>❌ 不是架构师</strong><br>
+                        拒绝操作
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-box">
+                <strong>❌ 权限不足示例：</strong><br>
+                权限不足：只有架构师可以切换模式（当前角色: frontend）<br>
+                <br>
+                💡 提示: 请先切换到架构师角色<br>
+                   python3 scripts/amazing-cli.py role set architect
+            </div>
+        </div>
+
+        <!-- 步骤 5 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">5</span>
+                记录切换信息
+            </div>
+            <div class="role-tag">系统</div>
+            <p style="margin: 15px 0;">系统记录模式切换的详细信息，用于审计和追溯。</p>
+
+            <p><strong>记录内容：</strong></p>
+            <div class="command-box" style="color: #f0f0f0;">{
+  "timestamp": "2025-03-15T10:30:00",
+  "operator": "architect",
+  "from": "semi-auto",
+  "to": "full-auto",
+  "requirement_id": "REQ-001",
+  "reason": "成熟功能，团队熟悉，风险可控"
+}</div>
+
+            <p style="margin-top: 20px;"><strong>记录位置：</strong></p>
+            <ul style="margin-left: 20px;">
+                <li><code>.agents/config.json</code> - 配置文件中的 modeHistory</li>
+                <li><code>.agents/logs/mode_changes.log</code> - 审计日志文件</li>
+            </ul>
+        </div>
+
+        <!-- 步骤 6 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">6</span>
+                AI 按新模式执行
+            </div>
+            <div class="role-tag">AI Agent</div>
+            <p style="margin: 15px 0;">AI 根据新的模式设置执行任务。</p>
+
+            <div class="mode-comparison">
+                <div class="mode-card">
+                    <div class="mode-title">全自动模式执行</div>
+                    <ul style="margin-left: 20px;">
+                        <li>AI 自主决策技术方案</li>
+                        <li>AI 自动生成代码</li>
+                        <li>AI 自动运行测试</li>
+                        <li>关键节点通知架构师</li>
+                        <li>异常时暂停等待人工</li>
+                    </ul>
+                </div>
+                <div class="mode-card">
+                    <div class="mode-title">半自动模式执行</div>
+                    <ul style="margin-left: 20px;">
+                        <li>AI 生成多种方案</li>
+                        <li>架构师选择方案</li>
+                        <li>AI 生成代码草稿</li>
+                        <li>架构师审查代码</li>
+                        <li>架构师批准后执行</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 查看历史 -->
+        <h2 style="color: #667eea; margin-top: 40px;">查看切换历史</h2>
+        <div class="workflow-step">
+            <div class="step-title">
+                查看模式切换历史
+            </div>
+            <div class="command-box">$ python3 scripts/mode_cli.py mode history</div>
+
+            <p style="margin-top: 20px;"><strong>输出示例：</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>切换</th>
+                        <th>需求ID</th>
+                        <th>原因</th>
+                        <th>操作者</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-03-15 10:30</td>
+                        <td>semi-auto → full-auto</td>
+                        <td>REQ-001</td>
+                        <td>成熟功能，风险可控</td>
+                        <td>architect</td>
+                    </tr>
+                    <tr>
+                        <td>2025-03-14 15:20</td>
+                        <td>full-auto → semi-auto</td>
+                        <td>REQ-002</td>
+                        <td>新项目，需要把关</td>
+                        <td>architect</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 按需求维度切换 -->
+        <h2 style="color: #667eea; margin-top: 40px;">按需求维度切换</h2>
+        <div class="workflow-step">
+            <div class="step-title">
+                不同需求使用不同模式
+            </div>
+            <p style="margin: 15px 0;">每个需求可以独立设置模式，互不影响。</p>
+
+            <div class="command-box"># 需求 REQ-001: 用户登录功能（成熟功能，低风险）<br>$ python3 scripts/mode_cli.py mode set full-auto -r REQ-001<br><br># 需求 REQ-002: 支付系统（高风险，需要把关）<br>$ python3 scripts/mode_cli.py mode set semi-auto -r REQ-002<br><br># 需求 REQ-003: 数据报表（低风险，快速开发）<br>$ python3 scripts/mode_cli.py mode set full-auto -r REQ-003</div>
+
+            <div class="tip-box">
+                <strong>💡 优势：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>灵活性高：不同需求可以使用不同策略</li>
+                    <li>风险可控：高风险需求使用半自动模式</li>
+                    <li>效率优化：低风险需求使用全自动模式</li>
+                    <li>可追溯：每个需求的模式切换都有记录</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div style="text-align: center; margin-top: 50px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+            <p style="color: #666;">
+                <a href="system-architecture.html">← 系统架构</a> |
+                <a href="../workflows/architect-workflow.html">架构师工作流 →</a>
+            </p>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+        <h3 style="color: #667eea; margin-bottom: 15px;">📞 联系我们</h3>
+        <p><strong>Email:</strong> <a href="mailto:305068308@qq.com" style="color: #667eea;">305068308@qq.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/z58362026/amazing" style="color: #667eea;">z58362026/amazing</a></p>
+    </div>
+</body>
+</html>
