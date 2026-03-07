@@ -1,0 +1,63 @@
+{
+  "skills": {
+    "prd-generator": {
+      "name": "PRD 生成器",
+      "description": "根据需求描述自动生成产品需求文档",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["completeness", "clarity", "feasibility"]
+      },
+      "template": "prd-template.md",
+      "tools": ["claude-code"]
+    },
+    "requirement-analyzer": {
+      "name": "需求分析器",
+      "description": "分析用户需求，提取关键功能点",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["accuracy", "coverage"]
+      }
+    },
+    "api-design": {
+      "name": "API 设计",
+      "description": "设计 RESTful API，生成 OpenAPI 规范",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["consistency", "usability"]
+      },
+      "standards": ["RESTful", "OpenAPI 3.0"]
+    },
+    "code-review": {
+      "name": "代码审查",
+      "description": "自动化代码审查，检测问题",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["issue_detection_rate", "false_positive_rate"]
+      },
+      "tools": ["SonarQube", "ESLint", "Pylint"]
+    },
+    "test-design": {
+      "name": "测试设计",
+      "description": "根据需求生成测试用例",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["coverage", "effectiveness"]
+      }
+    },
+    "deployment": {
+      "name": "自动化部署",
+      "description": "一键部署到各种环境",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["success_rate", "deployment_time"]
+      },
+      "targets": ["local", "docker", "k8s", "offline"]
+    }
+  }
+}

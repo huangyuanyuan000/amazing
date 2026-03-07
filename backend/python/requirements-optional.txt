@@ -1,0 +1,17 @@
+# 可选依赖
+
+# 数据库
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.10  # 需要 PostgreSQL 开发库
+redis==5.2.0
+
+# 认证
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# 数据库迁移
+alembic==1.14.0
+
+# 代码质量
+black==24.10.0
+ruff==0.8.4

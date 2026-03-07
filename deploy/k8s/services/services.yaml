@@ -1,0 +1,282 @@
+# API Gateway Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: amazing
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway
+        image: amazing/api-gateway:latest
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: amazing-config
+        - configMapRef:
+            name: amazing-db-config
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: amazing-secrets
+              key: DB_PASSWORD
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: amazing-secrets
+              key: JWT_SECRET
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway-svc
+  namespace: amazing
+spec:
+  selector:
+    app: api-gateway
+  ports:
+  - port: 8000
+    targetPort: 8000
+---
+# Frontend Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: amazing
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: amazing/frontend:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+  namespace: amazing
+spec:
+  selector:
+    app: frontend
+  ports:
+  - port: 80
+    targetPort: 80
+---
+# Common Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: common-service
+  namespace: amazing
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: common-service
+  template:
+    metadata:
+      labels:
+        app: common-service
+    spec:
+      containers:
+      - name: common
+        image: amazing/common-service:latest
+        ports:
+        - containerPort: 8001
+        envFrom:
+        - configMapRef:
+            name: amazing-config
+        - configMapRef:
+            name: amazing-db-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: common-svc
+  namespace: amazing
+spec:
+  selector:
+    app: common-service
+  ports:
+  - port: 8001
+    targetPort: 8001
+---
+# Compute Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compute-service
+  namespace: amazing
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: compute-service
+  template:
+    metadata:
+      labels:
+        app: compute-service
+    spec:
+      containers:
+      - name: compute
+        image: amazing/compute-service:latest
+        ports:
+        - containerPort: 8002
+        envFrom:
+        - configMapRef:
+            name: amazing-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: compute-svc
+  namespace: amazing
+spec:
+  selector:
+    app: compute-service
+  ports:
+  - port: 8002
+    targetPort: 8002
+---
+# Data Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-service
+  namespace: amazing
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: data-service
+  template:
+    metadata:
+      labels:
+        app: data-service
+    spec:
+      containers:
+      - name: data
+        image: amazing/data-service:latest
+        ports:
+        - containerPort: 8003
+        envFrom:
+        - configMapRef:
+            name: amazing-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-svc
+  namespace: amazing
+spec:
+  selector:
+    app: data-service
+  ports:
+  - port: 8003
+    targetPort: 8003
+---
+# Training Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: training-service
+  namespace: amazing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: training-service
+  template:
+    metadata:
+      labels:
+        app: training-service
+    spec:
+      containers:
+      - name: training
+        image: amazing/training-service:latest
+        ports:
+        - containerPort: 8004
+        envFrom:
+        - configMapRef:
+            name: amazing-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: training-svc
+  namespace: amazing
+spec:
+  selector:
+    app: training-service
+  ports:
+  - port: 8004
+    targetPort: 8004
+---
+# Model Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-service
+  namespace: amazing
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: model-service
+  template:
+    metadata:
+      labels:
+        app: model-service
+    spec:
+      containers:
+      - name: model
+        image: amazing/model-service:latest
+        ports:
+        - containerPort: 8005
+        envFrom:
+        - configMapRef:
+            name: amazing-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: model-svc
+  namespace: amazing
+spec:
+  selector:
+    app: model-service
+  ports:
+  - port: 8005
+    targetPort: 8005

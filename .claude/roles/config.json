@@ -1,0 +1,103 @@
+{
+  "roles": {
+    "pm": {
+      "name": "产品经理",
+      "permissions": [
+        "prd:create",
+        "prd:edit",
+        "requirement:review",
+        "feature:approve",
+        "acceptance:test"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "prd-generator",
+        "requirement-analyzer",
+        "prototype-design"
+      ]
+    },
+    "frontend": {
+      "name": "前端开发",
+      "permissions": [
+        "ui:develop",
+        "component:create",
+        "style:edit",
+        "frontend:deploy"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "react-component",
+        "ui-design",
+        "state-management",
+        "performance-optimization"
+      ],
+      "techStack": ["React", "TypeScript", "Vite", "TailwindCSS", "Zustand"]
+    },
+    "backend": {
+      "name": "后端开发",
+      "permissions": [
+        "api:develop",
+        "database:design",
+        "service:create",
+        "backend:deploy"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "api-design",
+        "database-design",
+        "auth-implement",
+        "microservice"
+      ],
+      "techStack": ["Python", "FastAPI", "Go", "PostgreSQL", "Redis", "gRPC"]
+    },
+    "qa": {
+      "name": "测试工程师",
+      "permissions": [
+        "test:design",
+        "test:execute",
+        "bug:report",
+        "quality:review"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "test-design",
+        "automation",
+        "bug-tracking",
+        "performance-test"
+      ],
+      "techStack": ["Pytest", "Jest", "Playwright", "JMeter"]
+    },
+    "ops": {
+      "name": "运维工程师",
+      "permissions": [
+        "deploy:execute",
+        "monitor:configure",
+        "troubleshoot:debug",
+        "infra:manage"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "deployment",
+        "monitoring",
+        "troubleshooting",
+        "k8s-management"
+      ],
+      "techStack": ["Docker", "Kubernetes", "Prometheus", "Grafana", "Helm"]
+    },
+    "operation": {
+      "name": "运营人员",
+      "permissions": [
+        "data:analyze",
+        "config:manage",
+        "user:operate"
+      ],
+      "tools": ["claude-code"],
+      "skills": [
+        "data-analysis",
+        "user-operation",
+        "config-management"
+      ],
+      "techStack": ["SQL", "Python", "Jupyter"]
+    }
+  }
+}

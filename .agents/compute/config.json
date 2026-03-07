@@ -1,0 +1,32 @@
+{
+  "agent": "compute",
+  "subAgents": {
+    "pm": {
+      "role": "产品经理",
+      "capabilities": ["资源规划", "调度策略设计"],
+      "skills": ["capacity-planning", "scheduling-design"]
+    },
+    "frontend": {
+      "role": "前端开发",
+      "capabilities": ["资源监控面板", "任务管理界面"],
+      "skills": ["dashboard-design", "realtime-monitoring"],
+      "techStack": ["React", "ECharts", "WebSocket"]
+    },
+    "backend": {
+      "role": "后端开发",
+      "capabilities": ["调度引擎", "资源池管理", "任务队列"],
+      "skills": ["scheduler", "resource-pool", "task-queue"],
+      "techStack": ["Go", "Kubernetes API", "etcd"]
+    },
+    "qa": {
+      "role": "测试工程师",
+      "capabilities": ["性能测试", "压力测试", "稳定性测试"],
+      "skills": ["performance-test", "stress-test"]
+    },
+    "ops": {
+      "role": "运维工程师",
+      "capabilities": ["K8s集群管理", "GPU驱动管理", "监控告警"],
+      "skills": ["k8s-ops", "gpu-management", "alerting"]
+    }
+  }
+}

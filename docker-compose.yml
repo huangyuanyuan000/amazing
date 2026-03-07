@@ -1,0 +1,152 @@
+version: '3.8'
+
+services:
+  # ==================== 基础设施 ====================
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: amazing
+      POSTGRES_USER: ${DB_USER:-amazing}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-amazing123}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deploy/scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-amazing}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD:-minioadmin123}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+  # ==================== 后端服务 ====================
+  api-gateway:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${DB_USER:-amazing}:${DB_PASSWORD:-amazing123}@postgres:5432/amazing
+      - REDIS_URL=redis://redis:6379/0
+      - MINIO_ENDPOINT=minio:9000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  common-service:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.common
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${DB_USER:-amazing}:${DB_PASSWORD:-amazing123}@postgres:5432/amazing
+      - REDIS_URL=redis://redis:6379/1
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  compute-service:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.compute
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${DB_USER:-amazing}:${DB_PASSWORD:-amazing123}@postgres:5432/amazing
+      - REDIS_URL=redis://redis:6379/2
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  data-service:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.data
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${DB_USER:-amazing}:${DB_PASSWORD:-amazing123}@postgres:5432/amazing
+      - REDIS_URL=redis://redis:6379/3
+      - MINIO_ENDPOINT=minio:9000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
+
+  training-service:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.training
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${DB_USER:-amazing}:${DB_PASSWORD:-amazing123}@postgres:5432/amazing
+      - REDIS_URL=redis://redis:6379/4
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  model-service:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.model
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${DB_USER:-amazing}:${DB_PASSWORD:-amazing123}@postgres:5432/amazing
+      - REDIS_URL=redis://redis:6379/5
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ==================== 前端 ====================
+  frontend:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api-gateway
+
+  # ==================== 监控 ====================
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./deploy/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin123}
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  postgres_data:
+  redis_data:
+  minio_data:
+  grafana_data:

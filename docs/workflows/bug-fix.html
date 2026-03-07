@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug 修复流程 - Amazing</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #f5576c;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .workflow-step {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #f5576c;
+        }
+        .step-number {
+            display: inline-block;
+            background: #f5576c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .step-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .command-box {
+            background: #2d2d2d;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .role-tag {
+            display: inline-block;
+            background: #f093fb;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px 5px 5px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .danger-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .severity-high { color: #dc3545; font-weight: bold; }
+        .severity-medium { color: #ffc107; font-weight: bold; }
+        .severity-low { color: #28a745; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐛 Bug 修复与回滚流程</h1>
+
+        <!-- 步骤 1 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                问题发现与报告
+            </div>
+            <div class="role-tag">运维工程师</div>
+            <div class="role-tag">测试工程师</div>
+            <div class="role-tag">用户</div>
+            <p style="margin: 15px 0;">通过监控告警或用户反馈发现问题。</p>
+            <div class="command-box">$ claude code<br>> 提交 Bug 报告：用户登录失败<br>> 严重程度：高<br>> 影响范围：所有用户<br>> 错误信息：500 Internal Server Error</div>
+            <div class="danger-box">
+                <strong>🚨 严重程度分级：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><span class="severity-high">P0 - 紧急：</span>核心功能不可用，影响所有用户</li>
+                    <li><span class="severity-medium">P1 - 高：</span>重要功能异常，影响部分用户</li>
+                    <li><span class="severity-low">P2 - 中：</span>次要功能问题，影响较小</li>
+                    <li><span class="severity-low">P3 - 低：</span>体验优化，不影响功能</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 2 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                问题定位与分析
+            </div>
+            <div class="role-tag">Review Agent</div>
+            <div class="role-tag">后端开发</div>
+            <p style="margin: 15px 0;">Review Agent 自动分析日志和代码，定位问题根源。</p>
+            <div class="command-box">$ claude code<br>> 分析 Bug：用户登录失败<br><br># Review Agent 自动执行：<br># 1. 查看错误日志<br># 2. 分析调用链路<br># 3. 定位问题代码<br># 4. 查找相关提交记录</div>
+            <div class="success-box">
+                <strong>✅ 自动定位信息：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>问题文件：backend/app/api/auth.py:45</li>
+                    <li>问题版本：v1.2.3 (commit: abc123)</li>
+                    <li>引入时间：2026-03-06 15:30</li>
+                    <li>根本原因：数据库连接池配置错误</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 3 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                回滚决策
+            </div>
+            <div class="role-tag">运维工程师</div>
+            <p style="margin: 15px 0;">根据严重程度决定是否立即回滚。</p>
+            <div class="danger-box">
+                <strong>🚨 P0/P1 级别 Bug - 立即回滚：</strong>
+                <div class="command-box" style="margin-top: 10px;">$ make rollback<br><br># 或指定版本<br>$ make rollback VERSION=v1.2.2</div>
+            </div>
+            <div class="warning-box">
+                <strong>⚠️ P2/P3 级别 Bug - 进入修复流程：</strong>
+                <p style="margin-top: 10px;">不影响核心功能，可以通过修复代码解决。</p>
+            </div>
+        </div>
+
+        <!-- 步骤 4 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">4</span>
+                代码修复
+            </div>
+            <div class="role-tag">后端开发</div>
+            <div class="role-tag">前端开发</div>
+            <p style="margin: 15px 0;">对应的 Agent 生成修复代码。</p>
+            <div class="command-box">$ claude code<br>> 修复 Bug：backend/app/api/auth.py:45<br>> 问题：数据库连接池配置错误<br><br># Common Agent 自动执行：<br># 1. 分析问题代码<br># 2. 生成修复方案<br># 3. 应用修复代码<br># 4. 生成测试用例</div>
+            <div class="success-box">
+                <strong>✅ 修复完成：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>修复文件：backend/app/api/auth.py</li>
+                    <li>修复内容：调整连接池参数</li>
+                    <li>测试用例：test_auth_connection_pool.py</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 5 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">5</span>
+                代码审核
+            </div>
+            <div class="role-tag">Review Agent</div>
+            <p style="margin: 15px 0;">Review Agent 审核修复代码。</p>
+            <div class="command-box">$ claude code<br>> 审核修复代码<br><br># Review Agent 自动检查：<br># 1. 是否解决了根本问题<br># 2. 是否引入新问题<br># 3. 是否符合代码规范<br># 4. 是否有足够的测试覆盖</div>
+        </div>
+
+        <!-- 步骤 6 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">6</span>
+                测试验证
+            </div>
+            <div class="role-tag">测试工程师</div>
+            <p style="margin: 15px 0;">运行自动化测试验证修复效果。</p>
+            <div class="command-box">$ make test<br><br># 运行相关测试<br>$ pytest tests/test_auth_connection_pool.py -v<br><br># 运行回归测试<br>$ make test-regression</div>
+            <div class="success-box">
+                <strong>✅ 测试通过：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>单元测试：100% 通过</li>
+                    <li>集成测试：100% 通过</li>
+                    <li>回归测试：100% 通过</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 7 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">7</span>
+                灰度发布
+            </div>
+            <div class="role-tag">运维工程师</div>
+            <p style="margin: 15px 0;">小流量验证修复效果。</p>
+            <div class="command-box"># 灰度发布 5%<br>$ make deploy-canary PERCENT=5<br><br># 观察 10 分钟，无问题则扩大<br>$ make deploy-canary PERCENT=20<br><br># 逐步扩大到 50%<br>$ make deploy-canary PERCENT=50<br><br># 全量发布<br>$ make deploy-k8s</div>
+            <div class="warning-box">
+                <strong>⚠️ 灰度发布注意事项：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>每个阶段观察 10-30 分钟</li>
+                    <li>监控错误率、响应时间、CPU/内存</li>
+                    <li>发现异常立即回滚</li>
+                    <li>保持与用户沟通</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 8 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">8</span>
+                监控观察
+            </div>
+            <div class="role-tag">运维工程师</div>
+            <div class="role-tag">运营人员</div>
+            <p style="margin: 15px 0;">持续监控系统状态，确保问题已解决。</p>
+            <div class="command-box">$ claude code<br>> 查看系统监控<br>> 查看错误日志<br>> 查看用户反馈</div>
+            <div class="success-box">
+                <strong>✅ 修复成功标准：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>错误率恢复正常</li>
+                    <li>响应时间正常</li>
+                    <li>无新的告警</li>
+                    <li>用户反馈正常</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 回滚操作指南 -->
+        <div class="workflow-step" style="border-left-color: #dc3545;">
+            <h2 style="color: #dc3545; margin-bottom: 20px;">🔄 回滚操作指南</h2>
+
+            <h3 style="color: #333; margin: 20px 0 10px 0;">1. 查看可回滚版本</h3>
+            <div class="command-box">$ make list-versions<br><br># 输出示例：<br># v1.2.3 (current) - 2026-03-07 10:00<br># v1.2.2 (stable)  - 2026-03-06 15:00<br># v1.2.1 (stable)  - 2026-03-05 12:00</div>
+
+            <h3 style="color: #333; margin: 20px 0 10px 0;">2. 回滚到指定版本</h3>
+            <div class="command-box"># 回滚到上一版本<br>$ make rollback<br><br># 回滚到指定版本<br>$ make rollback VERSION=v1.2.2</div>
+
+            <h3 style="color: #333; margin: 20px 0 10px 0;">3. 验证回滚结果</h3>
+            <div class="command-box">$ make verify-rollback<br><br># 检查：<br># 1. 服务是否正常启动<br># 2. 健康检查是否通过<br># 3. 关键接口是否可用<br># 4. 数据库连接是否正常</div>
+
+            <h3 style="color: #333; margin: 20px 0 10px 0;">4. 回滚失败处理</h3>
+            <div class="danger-box">
+                <strong>🚨 如果回滚失败：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>立即通知团队</li>
+                    <li>查看回滚日志：<code>make rollback-logs</code></li>
+                    <li>尝试回滚到更早的稳定版本</li>
+                    <li>必要时启用备用系统</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 最佳实践 -->
+        <div class="workflow-step" style="border-left-color: #28a745;">
+            <h2 style="color: #28a745; margin-bottom: 20px;">✨ 最佳实践</h2>
+
+            <h3 style="color: #333; margin: 20px 0 10px 0;">1. 预防措施</h3>
+            <ul style="margin-left: 40px;">
+                <li>代码必须通过 Review Agent 审核</li>
+                <li>测试覆盖率必须 > 80%</li>
+                <li>关键功能必须有集成测试</li>
+                <li>上线前必须在预发环境验证</li>
+            </ul>
+
+            <h3 style="color: #333; margin: 20px 0 10px 0;">2. 快速响应</h3>
+            <ul style="margin-left: 40px;">
+                <li>建立 7x24 小时值班制度</li>
+                <li>配置告警通知（钉钉/企业微信/邮件）</li>
+                <li>P0 级别 Bug 15 分钟内响应</li>
+                <li>P1 级别 Bug 1 小时内响应</li>
+            </ul>
+
+            <h3 style="color: #333; margin: 20px 0 10px 0;">3. 问题复盘</h3>
+            <ul style="margin-left: 40px;">
+                <li>每次 P0/P1 Bug 必须复盘</li>
+                <li>分析根本原因</li>
+                <li>制定改进措施</li>
+                <li>更新 Agent 知识库</li>
+            </ul>
+        </div>
+
+        <!-- 页脚 -->
+        <div style="text-align: center; margin-top: 50px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+            <p style="color: #666;">
+                <a href="development.html">← 开发工作流</a> |
+                <a href="../architecture/system-architecture.html">返回系统架构</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

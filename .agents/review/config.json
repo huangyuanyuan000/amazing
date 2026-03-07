@@ -1,0 +1,36 @@
+{
+  "agent": "review",
+  "subAgents": {
+    "qa": {
+      "role": "测试工程师",
+      "capabilities": ["代码审查", "测试审查", "质量把控"],
+      "skills": ["code-review", "test-review", "quality-gate"],
+      "tools": ["SonarQube", "ESLint", "Pylint"]
+    },
+    "ops": {
+      "role": "运维工程师",
+      "capabilities": ["部署审查", "安全审查", "合规检查"],
+      "skills": ["deployment-review", "security-scan", "compliance-check"],
+      "tools": ["Trivy", "OWASP ZAP", "Checkov"]
+    }
+  },
+  "workflows": {
+    "code-review": {
+      "steps": [
+        {"action": "静态代码分析"},
+        {"action": "安全扫描"},
+        {"action": "测试覆盖率检查"},
+        {"action": "人工审查"},
+        {"action": "审查报告生成"}
+      ]
+    },
+    "deployment-review": {
+      "steps": [
+        {"action": "配置审查"},
+        {"action": "安全检查"},
+        {"action": "合规验证"},
+        {"action": "批准部署"}
+      ]
+    }
+  }
+}

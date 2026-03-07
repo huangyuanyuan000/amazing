@@ -1,0 +1,64 @@
+{
+  "agent": "common",
+  "subAgents": {
+    "pm": {
+      "role": "产品经理",
+      "capabilities": ["需求分析", "PRD编写", "原型设计", "验收测试"],
+      "skills": ["prd-generator", "requirement-analyzer"],
+      "tools": ["claude-code", "codex"]
+    },
+    "frontend": {
+      "role": "前端开发",
+      "capabilities": ["UI开发", "组件开发", "状态管理", "性能优化"],
+      "skills": ["react-component", "ui-design", "state-management"],
+      "tools": ["claude-code", "codex"],
+      "techStack": ["React", "TypeScript", "Vite", "TailwindCSS"]
+    },
+    "backend": {
+      "role": "后端开发",
+      "capabilities": ["API开发", "数据库设计", "业务逻辑", "性能优化"],
+      "skills": ["api-design", "database-design", "auth-implement"],
+      "tools": ["claude-code", "codex"],
+      "techStack": ["Python", "FastAPI", "PostgreSQL", "Redis"]
+    },
+    "qa": {
+      "role": "测试工程师",
+      "capabilities": ["测试用例设计", "自动化测试", "Bug追踪", "质量报告"],
+      "skills": ["test-design", "automation", "bug-tracking"],
+      "tools": ["claude-code", "codex"],
+      "techStack": ["Pytest", "Playwright", "Jest"]
+    },
+    "ops": {
+      "role": "运维工程师",
+      "capabilities": ["部署", "监控", "故障排查", "性能调优"],
+      "skills": ["deployment", "monitoring", "troubleshooting"],
+      "tools": ["claude-code", "codex"],
+      "techStack": ["Docker", "Kubernetes", "Prometheus", "Grafana"]
+    },
+    "operation": {
+      "role": "运营人员",
+      "capabilities": ["数据分析", "用户运营", "配置管理"],
+      "skills": ["data-analysis", "user-operation"],
+      "tools": ["claude-code"]
+    }
+  },
+  "workflows": {
+    "feature-development": {
+      "steps": [
+        {"role": "pm", "action": "创建PRD"},
+        {"role": "frontend", "action": "UI设计与开发"},
+        {"role": "backend", "action": "API开发"},
+        {"role": "qa", "action": "测试"},
+        {"role": "ops", "action": "部署"}
+      ]
+    },
+    "bug-fix": {
+      "steps": [
+        {"role": "qa", "action": "Bug复现"},
+        {"role": "backend", "action": "定位修复"},
+        {"role": "qa", "action": "回归测试"},
+        {"role": "ops", "action": "热修复部署"}
+      ]
+    }
+  }
+}

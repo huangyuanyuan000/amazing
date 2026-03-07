@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "agents": {
+    "common": {
+      "name": "通用模块 Agent",
+      "description": "负责用户管理、权限控制、日志审计等通用功能",
+      "path": ".agents/common",
+      "subAgents": ["pm", "frontend", "backend", "qa", "ops", "operation"],
+      "skills": ["user-management", "auth", "logging", "api-design"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["code_quality", "test_coverage", "performance"]
+      }
+    },
+    "compute": {
+      "name": "算力平台 Agent",
+      "description": "负责GPU/CPU资源调度、集群管理",
+      "path": ".agents/compute",
+      "subAgents": ["pm", "frontend", "backend", "qa", "ops"],
+      "skills": ["resource-scheduling", "cluster-management", "monitoring"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["resource_utilization", "scheduling_efficiency"]
+      }
+    },
+    "data": {
+      "name": "数据平台 Agent",
+      "description": "负责数据集管理、数据处理、标注工具",
+      "path": ".agents/data",
+      "subAgents": ["pm", "frontend", "backend", "qa", "ops"],
+      "skills": ["dataset-management", "data-processing", "annotation"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["data_quality", "processing_speed"]
+      }
+    },
+    "training": {
+      "name": "训推平台 Agent",
+      "description": "负责模型训练、推理部署、实验管理",
+      "path": ".agents/training",
+      "subAgents": ["pm", "frontend", "backend", "qa", "ops"],
+      "skills": ["model-training", "inference", "experiment-tracking"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["training_efficiency", "model_accuracy"]
+      }
+    },
+    "model-service": {
+      "name": "模型服务 Agent",
+      "description": "负责模型API服务、版本管理、监控告警",
+      "path": ".agents/model-service",
+      "subAgents": ["pm", "frontend", "backend", "qa", "ops"],
+      "skills": ["api-gateway", "version-control", "monitoring"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["api_latency", "throughput", "availability"]
+      }
+    },
+    "review": {
+      "name": "审核 Agent",
+      "description": "负责代码审查、质量把控、合规检查",
+      "path": ".agents/review",
+      "subAgents": ["qa", "ops"],
+      "skills": ["code-review", "security-scan", "compliance-check"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["review_quality", "issue_detection_rate"]
+      }
+    }
+  },
+  "orchestrator": {
+    "rolePermissions": {
+      "pm": ["prd-create", "requirement-review", "acceptance"],
+      "frontend": ["ui-develop", "component-develop"],
+      "backend": ["api-develop", "service-develop"],
+      "qa": ["test-design", "test-execute", "bug-report"],
+      "ops": ["deploy", "monitor", "troubleshoot"],
+      "operation": ["data-analysis", "config-management"]
+    },
+    "scenarios": {
+      "feature-development": ["prd", "design", "develop", "test", "deploy"],
+      "bug-fix": ["reproduce", "diagnose", "fix", "test", "deploy"],
+      "requirement-analysis": ["collect", "analyze", "prd-generate"]
+    }
+  }
+}

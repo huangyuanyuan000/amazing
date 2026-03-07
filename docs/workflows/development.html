@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发工作流 - Amazing</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .workflow-step {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .step-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .command-box {
+            background: #2d2d2d;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .role-tag {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px 5px 5px 0;
+        }
+        .tip-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 开发工作流程</h1>
+
+        <!-- 步骤 1 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                需求提交
+            </div>
+            <div class="role-tag">产品经理</div>
+            <p style="margin: 15px 0;">产品经理通过 Claude Code CLI 提交需求文档。</p>
+            <div class="command-box">$ claude code<br>> 我要提交一个新需求：添加用户管理模块</div>
+            <div class="tip-box">
+                <strong>💡 提示：</strong>需求描述要清晰，包含功能点、验收标准、优先级等信息。
+            </div>
+        </div>
+
+        <!-- 步骤 2 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                需求分析与路由
+            </div>
+            <div class="role-tag">Common Agent</div>
+            <p style="margin: 15px 0;">Common Agent 自动分析需求类型，路由到对应的业务 Agent。</p>
+            <ul style="margin-left: 40px;">
+                <li>通用功能 → Common Agent</li>
+                <li>算力相关 → Compute Agent</li>
+                <li>数据相关 → Data Agent</li>
+                <li>训练相关 → Training Agent</li>
+                <li>模型服务 → Model Service Agent</li>
+            </ul>
+        </div>
+
+        <!-- 步骤 3 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                任务分解与编排
+            </div>
+            <div class="role-tag">Orchestrator Sub-Agent</div>
+            <p style="margin: 15px 0;">业务 Agent 的 Orchestrator 将需求分解为具体任务，分配给相应的 Sub-Agents。</p>
+            <div class="success-box">
+                <strong>✅ 自动生成：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>前端组件代码</li>
+                    <li>后端 API 接口</li>
+                    <li>数据库表结构</li>
+                    <li>单元测试用例</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 4 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">4</span>
+                代码生成
+            </div>
+            <div class="role-tag">前端开发</div>
+            <div class="role-tag">后端开发</div>
+            <p style="margin: 15px 0;">Sub-Agents 调用对应的 Skills 生成代码。</p>
+            <div class="command-box"># 前端代码生成<br>$ claude code<br>> 生成用户管理页面<br><br># 后端代码生成<br>$ claude code<br>> 生成用户管理 API</div>
+        </div>
+
+        <!-- 步骤 5 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">5</span>
+                代码审核
+            </div>
+            <div class="role-tag">Review Agent</div>
+            <p style="margin: 15px 0;">Review Agent 自动审核生成的代码。</p>
+            <ul style="margin-left: 40px;">
+                <li><strong>Security Agent：</strong>安全漏洞检测</li>
+                <li><strong>Performance Agent：</strong>性能问题检测</li>
+                <li><strong>Style Agent：</strong>代码风格检查</li>
+                <li><strong>Code Review Agent：</strong>代码质量审核</li>
+            </ul>
+            <div class="tip-box">
+                <strong>💡 提示：</strong>审核不通过会自动返回修改建议，Sub-Agent 会自动修复。
+            </div>
+        </div>
+
+        <!-- 步骤 6 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">6</span>
+                测试验证
+            </div>
+            <div class="role-tag">测试工程师</div>
+            <p style="margin: 15px 0;">测试工程师通过 CLI 触发自动化测试。</p>
+            <div class="command-box">$ make test<br><br># 或者<br>$ claude code<br>> 运行用户管理模块的测试用例</div>
+            <div class="success-box">
+                <strong>✅ 测试类型：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>单元测试 (Unit Test)</li>
+                    <li>集成测试 (Integration Test)</li>
+                    <li>E2E 测试 (End-to-End Test)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 7 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">7</span>
+                部署上线
+            </div>
+            <div class="role-tag">运维工程师</div>
+            <p style="margin: 15px 0;">运维工程师通过 CLI 一键部署。</p>
+            <div class="command-box"># 本地环境<br>$ make deploy-local<br><br># 生产环境<br>$ make deploy-k8s</div>
+        </div>
+
+        <!-- 步骤 8 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">8</span>
+                监控与反馈
+            </div>
+            <div class="role-tag">运营人员</div>
+            <div class="role-tag">运维工程师</div>
+            <p style="margin: 15px 0;">运营和运维人员监控系统运行状态。</p>
+            <ul style="margin-left: 40px;">
+                <li>实时监控服务状态</li>
+                <li>查看业务数据</li>
+                <li>接收告警通知</li>
+                <li>问题反馈</li>
+            </ul>
+        </div>
+
+        <!-- 页脚 -->
+        <div style="text-align: center; margin-top: 50px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+            <p style="color: #666;">
+                <a href="../architecture/system-architecture.html">← 返回系统架构</a> |
+                <a href="bug-fix.html">Bug 修复流程 →</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
