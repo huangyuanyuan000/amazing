@@ -228,16 +228,38 @@ cd frontend && npm run dev
 
 ### 5. 选择角色
 
-```bash
-# 查看所有角色
-python3 scripts/amazing-cli.py role list
+**方式 1: 对话申请 (推荐)**
 
-# 设置角色
+```bash
+# 交互式对话
+python3 scripts/amazing-cli.py role chat
+
+# 直接描述
+python3 scripts/amazing-cli.py role chat "我是前端开发"
+python3 scripts/amazing-cli.py role chat "我负责后端API"
+python3 scripts/amazing-cli.py role chat "我做产品需求"
+```
+
+系统会智能识别你的意图并推荐合适的角色。
+
+**方式 2: 直接设置**
+
+```bash
 python3 scripts/amazing-cli.py role set pm          # 产品经理
 python3 scripts/amazing-cli.py role set frontend    # 前端开发
 python3 scripts/amazing-cli.py role set backend     # 后端开发
 python3 scripts/amazing-cli.py role set qa          # 测试工程师
 python3 scripts/amazing-cli.py role set ops         # 运维工程师
+```
+
+**方式 3: 交互选择**
+
+```bash
+# 查看所有角色
+python3 scripts/amazing-cli.py role list
+
+# 交互式选择
+python3 scripts/amazing-cli.py role select
 ```
 
 ---
@@ -534,6 +556,7 @@ IronClaw:
 
 ### 接入指南
 - [docs/ROLE_ONBOARDING.md](./docs/ROLE_ONBOARDING.md) - 各工种接入指南
+- [docs/ROLE_CHAT_GUIDE.md](./docs/ROLE_CHAT_GUIDE.md) - 对话申请角色指南
 - [docs/CLAUDE_CODE_GUIDE.md](./docs/CLAUDE_CODE_GUIDE.md) - Claude Code 接入
 - [docs/IRONCLAW_GUIDE.md](./docs/IRONCLAW_GUIDE.md) - IronClaw 使用指南
 

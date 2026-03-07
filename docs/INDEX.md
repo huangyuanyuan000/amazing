@@ -20,6 +20,10 @@
   - 测试工程师 (QA)
   - 运维工程师 (Ops)
   - 运营人员 (Operation)
+- [ROLE_CHAT_GUIDE.md](./ROLE_CHAT_GUIDE.md) - 对话申请角色指南 (新增)
+  - 智能识别
+  - 自然语言申请
+  - IronClaw 对话
 
 ### 4. Claude Code 接入
 - [CLAUDE_CODE_GUIDE.md](./CLAUDE_CODE_GUIDE.md) - Claude Code (龙虾) 接入指南
