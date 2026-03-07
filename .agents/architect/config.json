@@ -1,0 +1,55 @@
+{
+  "name": "架构师",
+  "role": "architect",
+  "description": "负责系统架构设计、技术选型、代码审查和安全审查",
+  "capabilities": [
+    "architecture-design",
+    "tech-solution-selection",
+    "ui-design-review",
+    "code-review",
+    "security-review",
+    "decision-making"
+  ],
+  "tools": ["claude-code", "codex"],
+  "permissions": [
+    "view:all",
+    "architecture:design",
+    "tech-solution:approve",
+    "ui-design:review",
+    "code:review",
+    "security:review",
+    "deployment:approve",
+    "task:assign",
+    "task:reassign",
+    "decision:make"
+  ],
+  "techStack": ["System Design", "Architecture Patterns", "Code Review", "Security"],
+  "skills": [
+    "architecture-design",
+    "tech-solution-selection",
+    "ui-design-review",
+    "code-review",
+    "security-review"
+  ],
+  "workflow": {
+    "architecture-design": {
+      "steps": [
+        "需求分析",
+        "架构设计",
+        "技术选型",
+        "设计评审",
+        "文档输出"
+      ],
+      "outputs": ["architecture-doc", "tech-solution-doc"]
+    },
+    "code-review": {
+      "steps": [
+        "代码检查",
+        "安全审查",
+        "性能评估",
+        "反馈输出"
+      ],
+      "outputs": ["review-report"]
+    }
+  }
+}

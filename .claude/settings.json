@@ -9,6 +9,11 @@
     "skills": ".skills/"
   },
   "roles": {
+    "architect": {
+      "name": "架构师",
+      "permissions": ["read", "write", "review", "approve", "deploy-all"],
+      "agents": ["common", "compute", "data", "training", "model-service", "review"]
+    },
     "product-manager": {
       "name": "产品经理",
       "permissions": ["read", "comment", "approve-requirement"],

@@ -1,5 +1,30 @@
 {
   "roles": {
+    "architect": {
+      "name": "架构师",
+      "permissions": [
+        "view:all",
+        "architecture:design",
+        "tech-solution:approve",
+        "ui-design:review",
+        "code:review",
+        "security:review",
+        "deployment:approve",
+        "task:assign",
+        "task:reassign",
+        "decision:make"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "architecture-design",
+        "tech-solution-selection",
+        "ui-design-review",
+        "code-review",
+        "security-review",
+        "decision-making"
+      ],
+      "techStack": ["System Design", "Architecture Patterns", "Code Review", "Security"]
+    },
     "pm": {
       "name": "产品经理",
       "permissions": [

@@ -38,6 +38,12 @@
           "skill": "prd-generator"
         },
         {
+          "step": "架构师决策",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "architecture-design"
+        },
+        {
           "step": "前端开发",
           "role": "frontend",
           "tool": "claude-code",
@@ -50,10 +56,22 @@
           "skill": "api-design"
         },
         {
+          "step": "架构师审查",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "code-review"
+        },
+        {
           "step": "测试",
           "role": "qa",
           "tool": "claude-code",
           "skill": "test-design"
+        },
+        {
+          "step": "架构师验收",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "security-review"
         },
         {
           "step": "部署",
@@ -74,6 +92,12 @@
           "step": "问题定位",
           "role": "backend",
           "tool": "claude-code"
+        },
+        {
+          "step": "架构师审查",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "code-review"
         },
         {
           "step": "修复代码",
@@ -115,6 +139,12 @@
           "role": "pm",
           "tool": "claude-code",
           "skill": "prd-generator"
+        },
+        {
+          "step": "架构师决策",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "architecture-design"
         },
         {
           "step": "技术评审",
