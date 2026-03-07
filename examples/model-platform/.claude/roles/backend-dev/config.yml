@@ -1,0 +1,67 @@
+role: backend-dev
+displayName: 后端开发
+level: developer
+icon: ⚙️
+
+description: |
+  后端工程师，负责服务端开发、API 设计和数据库设计。
+
+responsibilities:
+  - 后端服务和 API 开发
+  - 数据库设计和优化
+  - 业务逻辑实现
+  - 后端测试编写
+  - 性能优化和问题排查
+
+permissions:
+  read:
+    - docs/
+    - src/backend/
+    - .agents/*/backend/
+    - deploy/  # 查看部署配置
+  write:
+    - src/backend/
+    - tests/backend/
+    - .agents/*/backend/
+  create:
+    - api-endpoints
+    - services
+    - models
+    - backend-tests
+
+capabilities:
+  - 开发后端服务和 API
+  - 设计数据库表结构
+  - 编写业务逻辑
+  - 编写后端测试
+  - 创建后端相关 Agent
+
+tools:
+  read:
+    - docs/**
+    - src/backend/**
+    - .agents/*/backend/**
+    - deploy/**
+  write:
+    - src/backend/**
+    - tests/backend/**
+    - .agents/*/backend/**
+  execute:
+    - python
+    - pytest
+    - alembic
+    - black
+    - ruff
+
+skills:
+  - python-development
+  - fastapi
+  - database-design
+  - api-design
+  - backend-testing
+
+workflows:
+  - feature-development
+  - code-review
+  - bug-fix
+  - database-migration

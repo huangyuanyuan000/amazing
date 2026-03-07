@@ -1,0 +1,16 @@
+{
+  "name": "component-generator",
+  "displayName": "组件生成器",
+  "description": "生成可复用的 React 组件",
+  "role": "frontend-dev",
+  "inputs": [
+    "component_name",
+    "props",
+    "features"
+  ],
+  "outputs": [
+    "component_file"
+  ],
+  "max_context": 15000,
+  "max_output_lines": 150
+}

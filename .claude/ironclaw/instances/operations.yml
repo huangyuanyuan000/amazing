@@ -1,0 +1,36 @@
+ironclaw_instance:
+  role: operations
+  title: "运营人员"
+  level: viewer
+  department: operations
+
+  permissions:
+    read: [docs/, docs/operations/, config/app.yml]
+    write: [docs/operations/, config/features.yml]
+    create: [operation-reports, data-analysis, feature-configs]
+    execute: [analytics, report-generation]
+
+  restrictions:
+    - 不能修改代码
+    - 不能修改部署配置
+    - 不能创建/修改角色
+    - 不能直接访问数据库
+
+  communication:
+    can_request_to:
+      - architect: [功能开关申请, 配置变更申请]
+      - product-manager: [数据分析报告, 运营策略建议]
+      - backend-dev: [数据查询请求, 报表需求]
+    can_receive_from:
+      - product-manager: [运营需求]
+      - architect: [配置变更审批]
+
+  handoff_agents:
+    - data-analyst
+    - report-generator
+    - strategy-advisor
+    - config-manager
+
+  workflows:
+    - operations: [all_steps]
+    - bug-fix: [bug_reporting]

@@ -1,0 +1,29 @@
+chain: operations
+name: "运营链"
+description: "从数据分析到运营配置"
+
+handoffs:
+  - id: OPS-01
+    name: "数据采集与分析"
+    agent: data-analyst
+    ironclaw_role: operations
+    max_lines: 200
+
+  - id: OPS-02
+    name: "运营报告生成"
+    agent: report-generator
+    output: "docs/operations/report-{date}.md"
+    html_output: "docs/html/operations/report-{date}.html"
+    max_lines: 200
+
+  - id: OPS-03
+    name: "运营策略建议"
+    agent: strategy-advisor
+    ironclaw_role: operations
+    max_lines: 150
+
+  - id: OPS-04
+    name: "运营配置变更"
+    agent: config-manager
+    ironclaw_role: operations
+    max_lines: 150

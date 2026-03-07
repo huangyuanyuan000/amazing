@@ -1,0 +1,45 @@
+chain: tech-architecture
+name: "技术架构链"
+description: "从技术选型到项目脚手架生成"
+
+handoffs:
+  - id: TA-01
+    name: "技术选型决策"
+    agent: tech-stack-selector
+    output: "docs/architecture/tech-stack.md"
+    html_output: "docs/html/architecture/tech-stack.html"
+    max_lines: 200
+
+  - id: TA-02
+    name: "系统架构设计"
+    agent: architecture-designer
+    output: "docs/architecture/system-design.md"
+    html_output: "docs/html/architecture/system-design.html"
+    max_lines: 200
+
+  - id: TA-03
+    name: "数据架构设计"
+    agent: data-architect
+    output: "docs/architecture/data-design.md"
+    html_output: "docs/html/architecture/data-design.html"
+    max_lines: 200
+
+  - id: TA-04
+    name: "API 架构设计"
+    agent: api-architect
+    output: "docs/architecture/api-design.md"
+    html_output: "docs/html/architecture/api-design.html"
+    max_lines: 200
+
+  - id: TA-05
+    name: "部署架构设计"
+    agent: deployment-architect
+    output: "docs/architecture/deployment-design.md"
+    html_output: "docs/html/architecture/deployment-design.html"
+    max_lines: 200
+
+  - id: TA-06
+    name: "项目脚手架生成"
+    agent: scaffold-generator
+    output: "project structure"
+    max_lines: 200

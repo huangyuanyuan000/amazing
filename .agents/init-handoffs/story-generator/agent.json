@@ -1,0 +1,7 @@
+{
+  "name": "story-generator",
+  "type": "product-analysis",
+  "description": "用户故事生成器",
+  "max_lines": 200,
+  "output": "docs/product/user-stories/"
+}

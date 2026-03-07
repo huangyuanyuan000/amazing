@@ -1,0 +1,21 @@
+{
+  "id": "evo-20260308212724",
+  "type": "prompt_refinement",
+  "agent": "test-agent",
+  "trigger": "manual",
+  "description": "测试进化报告生成",
+  "changes": {},
+  "impact": {
+    "agent": "test-agent",
+    "change_type": "prompt_refinement",
+    "downstream_agents": [],
+    "affected_workflows": [],
+    "risk_level": "low"
+  },
+  "status": "approved",
+  "created_at": "2026-03-08T21:27:24.152641",
+  "applied_at": null,
+  "approved_by": "张三（架构师）",
+  "approval_comment": "变更合理，批准进化",
+  "rejection_reason": null
+}

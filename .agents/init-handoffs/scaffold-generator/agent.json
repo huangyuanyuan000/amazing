@@ -1,0 +1,7 @@
+{
+  "name": "scaffold-generator",
+  "type": "tech-architecture",
+  "description": "项目脚手架生成器",
+  "max_lines": 200,
+  "output": "project structure"
+}

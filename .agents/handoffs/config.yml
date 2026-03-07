@@ -1,0 +1,41 @@
+handoffs:
+  engine:
+    name: "Handoffs 任务拆解引擎"
+    version: "3.0"
+
+  mode_control:
+    scope: per_task                    # 任务级模式控制
+    options:
+      auto: "全自动，链路自动流转到终点"
+      semi_auto: "每节点暂停等待确认"
+      chain_slice: "指定起止环节"
+    chain_slice:
+      from: "起始环节 ID"
+      to: "终止环节 ID"
+      mode: "auto | semi_auto"
+
+  principles:
+    - 单文件输出 ≤ 200 行
+    - 每个 Handoff 只完成一个明确目标
+    - 通过文件系统传递状态
+    - 支持暂停/恢复/回滚
+    - 所有产出同步生成 Markdown + HTML 架构图
+    - 每步完成后自动 Git 提交
+
+  granularity:
+    "< 200 行": one_shot
+    "200-500 行": skeleton_then_fill
+    "> 500 行": split_files
+    "多文件": module_by_module
+
+  ironclaw_integration:
+    description: "每个 Handoff Agent 执行时，会检查当前角色的 IronClaw 实例权限"
+    behavior: |
+      1. 读取执行角色的 IronClaw 实例
+      2. 校验当前操作是否在权限范围内
+      3. 如果需要跨角色操作，通过 IronClaw 通信协议发起请求
+      4. 记录审计日志
+
+  chains_path: ".agents/handoffs/chains/"
+  templates_path: ".agents/init-handoffs/"
+  state_path: ".agents/handoffs/state/"

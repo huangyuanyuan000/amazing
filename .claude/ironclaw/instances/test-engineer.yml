@@ -1,0 +1,43 @@
+ironclaw_instance:
+  role: test-engineer
+  title: "测试工程师"
+  level: developer
+  department: quality
+
+  permissions:
+    read: [docs/, src/, tests/, .agents/*/test/]
+    write: [tests/, docs/testing/]
+    create: [test-cases, test-reports, bug-reports]
+    execute: [test:all, test:unit, test:integration, test:e2e, coverage]
+
+  restrictions:
+    - 不能修改业务代码（除非修复 Bug）
+    - 不能修改部署配置
+    - 不能创建/修改角色
+
+  communication:
+    can_request_to:
+      - architect: [测试策略审批, 质量标准确认]
+      - product-manager: [需求澄清, Bug 优先级确认]
+      - frontend-dev: [Bug 复现, 测试协助]
+      - backend-dev: [Bug 复现, 测试协助]
+      - devops-engineer: [测试环境配置]
+    can_receive_from:
+      - product-manager: [验收标准]
+      - architect: [质量标准]
+      - frontend-dev: [测试协助请求]
+      - backend-dev: [测试协助请求]
+
+  handoff_agents:
+    - test-strategist
+    - unit-test-generator
+    - integration-test-generator
+    - e2e-test-generator
+    - performance-test-generator
+    - test-report-generator
+
+  workflows:
+    - testing: [all_steps]
+    - bug-fix: [regression_test]
+    - code-review: [quality_check]
+    - deployment: [deployment_verification]

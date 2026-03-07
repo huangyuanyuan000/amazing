@@ -1,0 +1,7 @@
+{
+  "name": "strategy-advisor",
+  "type": "operations",
+  "description": "策略建议器",
+  "max_lines": 200,
+  "output": "strategy recommendations"
+}

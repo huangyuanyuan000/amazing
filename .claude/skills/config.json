@@ -1,0 +1,294 @@
+{
+  "skills": {
+    "prd-generator": {
+      "name": "PRD 生成器",
+      "description": "根据需求描述自动生成产品需求文档",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["completeness", "clarity", "feasibility"]
+      },
+      "template": "prd-template.md",
+      "tools": ["claude-code"]
+    },
+    "requirement-analyzer": {
+      "name": "需求分析器",
+      "description": "分析用户需求，提取关键功能点",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["accuracy", "coverage"]
+      }
+    },
+    "api-design": {
+      "name": "API 设计",
+      "description": "设计 RESTful API，生成 OpenAPI 规范",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["consistency", "usability"]
+      },
+      "standards": ["RESTful", "OpenAPI 3.0"]
+    },
+    "code-review": {
+      "name": "代码审查",
+      "description": "自动化代码审查，检测问题",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["issue_detection_rate", "false_positive_rate"]
+      },
+      "tools": ["SonarQube", "ESLint", "Pylint"]
+    },
+    "test-design": {
+      "name": "测试设计",
+      "description": "根据需求生成测试用例",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["coverage", "effectiveness"]
+      }
+    },
+    "deployment": {
+      "name": "自动化部署",
+      "description": "一键部署到各种环境",
+      "version": "1.0.0",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["success_rate", "deployment_time"]
+      },
+      "targets": ["local", "docker", "k8s", "offline"]
+    },
+    "architecture-design": {
+      "name": "架构设计方法论",
+      "description": "系统架构设计方法论、模式选择、ADR 模板",
+      "version": "1.0.0",
+      "path": "architecture/architecture-design.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["design_quality", "pattern_coverage"]
+      },
+      "consumers": ["architect"]
+    },
+    "tech-selection": {
+      "name": "技术选型评估框架",
+      "description": "技术选型评估框架、对比矩阵、决策流程",
+      "version": "1.0.0",
+      "path": "architecture/tech-selection.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["selection_accuracy", "evaluation_completeness"]
+      },
+      "consumers": ["architect"]
+    },
+    "api-design-spec": {
+      "name": "API 设计规范",
+      "description": "RESTful API 设计规范、OpenAPI 3.0 模板",
+      "version": "1.0.0",
+      "path": "architecture/api-design.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["consistency", "usability"]
+      },
+      "consumers": ["architect", "backend"]
+    },
+    "react-component": {
+      "name": "React 组件规范",
+      "description": "React 组件开发规范、Hooks 模式、最佳实践",
+      "version": "1.0.0",
+      "path": "development/react-component.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["component_quality", "reusability"]
+      },
+      "consumers": ["frontend"]
+    },
+    "state-management": {
+      "name": "前端状态管理",
+      "description": "前端状态管理方案选择、Zustand/Redux 模式",
+      "version": "1.0.0",
+      "path": "development/state-management.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["performance", "maintainability"]
+      },
+      "consumers": ["frontend"]
+    },
+    "microservice": {
+      "name": "微服务设计模式",
+      "description": "微服务架构设计、服务拆分、通信方案",
+      "version": "1.0.0",
+      "path": "development/microservice.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["service_independence", "communication_efficiency"]
+      },
+      "consumers": ["backend", "architect"]
+    },
+    "auth-implement": {
+      "name": "认证授权实现",
+      "description": "JWT/OAuth2.0/RBAC 认证授权实现方案",
+      "version": "1.0.0",
+      "path": "development/auth-implement.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["security_score", "implementation_quality"]
+      },
+      "consumers": ["backend", "common"]
+    },
+    "database-design": {
+      "name": "Schema 设计规范",
+      "description": "数据库 Schema 设计、范式、索引策略",
+      "version": "1.0.0",
+      "path": "database/database-design.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["schema_quality", "index_effectiveness"]
+      },
+      "consumers": ["database", "backend"]
+    },
+    "db-migration": {
+      "name": "数据库迁移管理",
+      "description": "迁移脚本生成、版本管理、零停机迁移",
+      "version": "1.0.0",
+      "path": "database/db-migration.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["migration_success_rate", "rollback_reliability"]
+      },
+      "consumers": ["database"]
+    },
+    "query-optimization": {
+      "name": "查询优化方法论",
+      "description": "SQL 优化、EXPLAIN 分析、性能基准",
+      "version": "1.0.0",
+      "path": "database/query-optimization.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["optimization_effectiveness", "query_performance"]
+      },
+      "consumers": ["database", "review"]
+    },
+    "test-design-methodology": {
+      "name": "测试用例设计方法论",
+      "description": "测试用例设计、覆盖率策略、测试分层",
+      "version": "1.0.0",
+      "path": "testing/test-design.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["coverage", "defect_detection_rate"]
+      },
+      "consumers": ["qa"]
+    },
+    "test-automation": {
+      "name": "自动化测试框架",
+      "description": "自动化测试框架配置、CI 集成方案",
+      "version": "1.0.0",
+      "path": "testing/test-automation.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["automation_rate", "execution_speed"]
+      },
+      "consumers": ["qa"]
+    },
+    "performance-test": {
+      "name": "性能测试方案",
+      "description": "性能测试设计、基准标准、压测工具",
+      "version": "1.0.0",
+      "path": "testing/performance-test.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["benchmark_accuracy", "bottleneck_detection"]
+      },
+      "consumers": ["qa", "review"]
+    },
+    "security-audit": {
+      "name": "安全审计清单",
+      "description": "OWASP Top 10 检查、安全编码规范",
+      "version": "1.0.0",
+      "path": "security/security-audit.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["vulnerability_detection", "false_positive_rate"]
+      },
+      "consumers": ["review", "architect"]
+    },
+    "code-review-checklist": {
+      "name": "代码审查清单",
+      "description": "代码审查清单、常见反模式检测",
+      "version": "1.0.0",
+      "path": "security/code-review.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["issue_detection_rate", "review_quality"]
+      },
+      "consumers": ["review"]
+    },
+    "docker-deploy": {
+      "name": "Docker 部署配置",
+      "description": "Docker 部署规范、镜像优化、Compose 模板",
+      "version": "1.0.0",
+      "path": "devops/docker-deploy.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["image_size", "build_time"]
+      },
+      "consumers": ["deployment", "ops"]
+    },
+    "k8s-deploy": {
+      "name": "Kubernetes 部署方案",
+      "description": "K8s 部署、Helm Chart、HPA 配置",
+      "version": "1.0.0",
+      "path": "devops/k8s-deploy.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["deployment_reliability", "resource_efficiency"]
+      },
+      "consumers": ["deployment", "ops"]
+    },
+    "ci-cd-pipeline": {
+      "name": "CI/CD 流水线模板",
+      "description": "GitHub Actions/GitLab CI 流水线模板",
+      "version": "1.0.0",
+      "path": "devops/ci-cd-pipeline.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["pipeline_speed", "failure_rate"]
+      },
+      "consumers": ["deployment", "ops"]
+    },
+    "monitoring-setup": {
+      "name": "监控告警配置",
+      "description": "Prometheus/Grafana 监控、告警规则模板",
+      "version": "1.0.0",
+      "path": "devops/monitoring-setup.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["alert_accuracy", "detection_speed"]
+      },
+      "consumers": ["deployment", "ops"]
+    },
+    "data-analysis": {
+      "name": "数据分析方法",
+      "description": "数据分析方法论、报表生成、可视化方案",
+      "version": "1.0.0",
+      "path": "operations/data-analysis.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["analysis_accuracy", "insight_quality"]
+      },
+      "consumers": ["operation"]
+    },
+    "config-management": {
+      "name": "运营配置管理",
+      "description": "运营配置管理、功能开关、A/B 测试",
+      "version": "1.0.0",
+      "path": "operations/config-management.md",
+      "evolution": {
+        "enabled": true,
+        "metrics": ["config_reliability", "rollback_speed"]
+      },
+      "consumers": ["operation"]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "architecture-designer",
+  "type": "tech-architecture",
+  "description": "系统架构设计器",
+  "max_lines": 200,
+  "output": "docs/architecture/system-design.md",
+  "html_output": "docs/html/architecture/system-design.html"
+}

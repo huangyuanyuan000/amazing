@@ -1,0 +1,16 @@
+{
+  "name": "backend-gen",
+  "displayName": "后端代码生成器",
+  "description": "生成完整的后端代码，包括数据模型、API、业务逻辑和 AI 交互层",
+  "inputs": [
+    "business_agents",
+    "tech_stack",
+    "database_config"
+  ],
+  "outputs": [
+    "backend_code",
+    "api_specs",
+    "database_schema"
+  ],
+  "max_context": 60000
+}

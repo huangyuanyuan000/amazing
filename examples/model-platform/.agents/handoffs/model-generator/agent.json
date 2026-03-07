@@ -1,0 +1,16 @@
+{
+  "name": "model-generator",
+  "displayName": "数据模型生成器",
+  "description": "生成单个 SQLAlchemy 数据模型",
+  "role": "backend-dev",
+  "inputs": [
+    "model_name",
+    "fields",
+    "relationships"
+  ],
+  "outputs": [
+    "model_file"
+  ],
+  "max_context": 15000,
+  "max_output_lines": 150
+}

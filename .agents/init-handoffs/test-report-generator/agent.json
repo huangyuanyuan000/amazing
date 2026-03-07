@@ -1,0 +1,7 @@
+{
+  "name": "test-report-generator",
+  "type": "testing",
+  "description": "测试报告生成器",
+  "max_lines": 200,
+  "output": "docs/testing/test-report.md"
+}

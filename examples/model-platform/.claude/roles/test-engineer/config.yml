@@ -1,0 +1,60 @@
+role: test-engineer
+displayName: 测试工程师
+level: developer
+icon: 🧪
+
+description: |
+  测试工程师，负责测试用例编写、自动化测试和质量保障。
+
+responsibilities:
+  - 测试用例设计和编写
+  - 自动化测试开发
+  - 功能测试和回归测试
+  - 性能测试和压力测试
+  - Bug 跟踪和验证
+
+permissions:
+  read:
+    - all  # 需要查看所有代码
+  write:
+    - tests/
+    - .github/workflows/test-*.yml
+    - docs/testing/
+  create:
+    - test-cases
+    - test-suites
+    - test-reports
+
+capabilities:
+  - 编写各类测试用例
+  - 开发自动化测试
+  - 配置 CI/CD 测试流程
+  - 生成测试报告
+  - 验证 Bug 修复
+
+tools:
+  read:
+    - all
+  write:
+    - tests/**
+    - .github/workflows/test-*.yml
+    - docs/testing/**
+  execute:
+    - pytest
+    - jest
+    - cypress
+    - k6
+    - locust
+
+skills:
+  - test-case-design
+  - automation-testing
+  - performance-testing
+  - security-testing
+  - bug-tracking
+
+workflows:
+  - feature-development
+  - bug-fix
+  - release-testing
+  - regression-testing

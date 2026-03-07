@@ -1,0 +1,15 @@
+{
+  "name": "structure-init",
+  "displayName": "基础结构初始化器",
+  "description": "创建项目目录结构，复制模板文件，初始化 Git 仓库",
+  "inputs": [
+    "project_name",
+    "project_path",
+    "framework_path"
+  ],
+  "outputs": [
+    "created_directories",
+    "copied_files"
+  ],
+  "max_context": 30000
+}

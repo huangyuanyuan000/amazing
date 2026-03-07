@@ -1,0 +1,7 @@
+{
+  "name": "bug-fixer",
+  "type": "bug-fix",
+  "description": "Bug 修复器",
+  "max_lines": 200,
+  "output": "code fix"
+}

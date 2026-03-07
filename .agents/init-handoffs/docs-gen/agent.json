@@ -1,0 +1,17 @@
+{
+  "name": "docs-gen",
+  "displayName": "文档生成器",
+  "description": "生成项目文档，包括 README、架构文档、API 文档和部署文档",
+  "inputs": [
+    "business_agents",
+    "api_specs",
+    "deploy_config"
+  ],
+  "outputs": [
+    "readme",
+    "architecture_doc",
+    "api_doc",
+    "deploy_doc"
+  ],
+  "max_context": 40000
+}

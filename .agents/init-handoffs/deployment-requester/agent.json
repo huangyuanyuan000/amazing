@@ -1,0 +1,7 @@
+{
+  "name": "deployment-requester",
+  "type": "deployment",
+  "description": "部署申请器",
+  "max_lines": 200,
+  "output": "deployment request"
+}

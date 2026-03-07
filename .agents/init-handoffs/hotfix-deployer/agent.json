@@ -1,0 +1,7 @@
+{
+  "name": "hotfix-deployer",
+  "type": "bug-fix",
+  "description": "热修复部署器",
+  "max_lines": 200,
+  "output": "deployment result"
+}

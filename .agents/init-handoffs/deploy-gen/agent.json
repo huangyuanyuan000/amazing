@@ -1,0 +1,16 @@
+{
+  "name": "deploy-gen",
+  "displayName": "部署配置生成器",
+  "description": "生成 Docker、K8s 和私有化部署配置",
+  "inputs": [
+    "business_agents",
+    "tech_stack",
+    "database_config"
+  ],
+  "outputs": [
+    "docker_config",
+    "k8s_config",
+    "offline_deploy"
+  ],
+  "max_context": 50000
+}

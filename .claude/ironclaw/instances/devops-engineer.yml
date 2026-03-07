@@ -1,0 +1,40 @@
+ironclaw_instance:
+  role: devops-engineer
+  title: "运维工程师"
+  level: operator
+  department: infrastructure
+
+  permissions:
+    read: [docs/, deploy/, config/, .github/workflows/]
+    write: [deploy/, config/, .github/workflows/, scripts/deploy.py]
+    create: [deployment-configs, ci-cd-pipelines, monitoring-configs]
+    execute: [deploy:dev, deploy:staging, deploy:production, rollback, backup]
+
+  restrictions:
+    - 不能修改业务代码
+    - 不能创建/修改角色
+    - 生产部署需要架构师审批
+
+  communication:
+    can_request_to:
+      - architect: [生产部署审批, 架构变更通知]
+      - product-manager: [部署计划确认]
+      - frontend-dev: [部署配置确认]
+      - backend-dev: [部署配置确认, 数据库迁移]
+      - test-engineer: [部署验证]
+    can_receive_from:
+      - architect: [部署审批结果]
+      - frontend-dev: [部署申请]
+      - backend-dev: [部署申请]
+      - test-engineer: [验证结果]
+
+  handoff_agents:
+    - deployment-requester
+    - deployment-executor
+    - deployment-verifier
+    - deployment-notifier
+    - hotfix-deployer
+
+  workflows:
+    - deployment: [all_steps]
+    - bug-fix: [hotfix_deployment]

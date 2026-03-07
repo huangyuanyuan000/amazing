@@ -1,0 +1,8 @@
+{
+  "name": "api-architect",
+  "type": "tech-architecture",
+  "description": "API 架构设计器",
+  "max_lines": 200,
+  "output": "docs/architecture/api-design.md",
+  "html_output": "docs/html/architecture/api-design.html"
+}

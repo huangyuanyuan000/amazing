@@ -1,0 +1,31 @@
+ironclaw_instance:
+  role: architect
+  title: "架构师"
+  level: admin
+  department: engineering
+
+  permissions:
+    - all  # 最高权限
+
+  exclusive_abilities:
+    - create_role
+    - modify_role
+    - delete_role
+    - approve_role_request
+    - modify_ironclaw_config
+    - modify_permissions
+    - create_workflow
+    - approve_architecture_change
+    - approve_production_deployment
+
+  communication:
+    can_request_to: [all_roles]
+    can_receive_from: [all_roles]
+
+  handoff_agents:
+    - architecture-designer
+    - tech-stack-selector
+    - standard-enforcer
+    - scaffold-generator
+
+  workflows: [all]

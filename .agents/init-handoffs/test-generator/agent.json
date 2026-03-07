@@ -1,0 +1,16 @@
+{
+  "name": "test-generator",
+  "displayName": "测试生成器",
+  "description": "生成后端单元测试和集成测试",
+  "role": "test-engineer",
+  "inputs": [
+    "test_target",
+    "test_type",
+    "test_cases"
+  ],
+  "outputs": [
+    "test_file"
+  ],
+  "max_context": 20000,
+  "max_output_lines": 200
+}

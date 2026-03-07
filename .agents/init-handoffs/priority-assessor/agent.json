@@ -1,0 +1,7 @@
+{
+  "name": "priority-assessor",
+  "type": "bug-fix",
+  "description": "优先级评估器",
+  "max_lines": 200,
+  "output": "priority assessment"
+}

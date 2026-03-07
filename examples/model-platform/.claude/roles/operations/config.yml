@@ -1,0 +1,60 @@
+role: operations
+displayName: 运营人员
+level: viewer
+icon: 📊
+
+description: |
+  运营人员，负责数据分析、运营配置和用户支持。
+
+responsibilities:
+  - 数据分析和报表
+  - 运营活动配置
+  - 用户反馈收集
+  - 内容管理
+  - 运营策略制定
+
+permissions:
+  read:
+    - docs/
+    - logs/
+    - metrics/
+    - src/frontend/  # 查看前端页面
+  write:
+    - config/operations/
+    - docs/operations/
+  create:
+    - reports
+    - dashboards
+    - operation-configs
+
+capabilities:
+  - 查看日志和指标
+  - 生成数据报表
+  - 配置运营参数
+  - 创建运营文档
+  - 访问管理后台
+
+tools:
+  read:
+    - docs/**
+    - logs/**
+    - metrics/**
+    - src/frontend/**
+  write:
+    - config/operations/**
+    - docs/operations/**
+  execute:
+    - data-analysis
+    - report-generation
+
+skills:
+  - data-analysis
+  - user-research
+  - content-management
+  - report-writing
+  - dashboard-design
+
+workflows:
+  - data-analysis
+  - user-feedback
+  - operation-planning

@@ -1,0 +1,7 @@
+{
+  "name": "deployment-executor",
+  "type": "deployment",
+  "description": "部署执行器",
+  "max_lines": 200,
+  "output": "deployment result"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "page-generator",
+  "displayName": "页面生成器",
+  "description": "生成单个 React 页面组件，包含基础布局和功能",
+  "role": "frontend-dev",
+  "inputs": [
+    "page_name",
+    "features",
+    "api_endpoints"
+  ],
+  "outputs": [
+    "page_component"
+  ],
+  "max_context": 20000,
+  "max_output_lines": 200
+}

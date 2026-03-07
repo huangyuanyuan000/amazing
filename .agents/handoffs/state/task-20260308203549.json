@@ -1,0 +1,162 @@
+{
+  "task_id": "task-20260308203549",
+  "task_name": "开发用户管理模块",
+  "chain": "code-generation",
+  "mode": "auto",
+  "from_handoff": null,
+  "to_handoff": null,
+  "role": null,
+  "status": "completed",
+  "subtasks": [
+    {
+      "id": "CG-01",
+      "name": "数据模型生成",
+      "agent": "model-generator",
+      "status": "completed",
+      "input": {
+        "task_name": "开发用户管理模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 150
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 数据模型生成 执行成功",
+        "agent": "model-generator"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:35:49.667613",
+      "completed_at": "2026-03-08T20:35:49.669266"
+    },
+    {
+      "id": "CG-02",
+      "name": "API 端点生成",
+      "agent": "api-generator",
+      "status": "completed",
+      "input": {
+        "task_name": "开发用户管理模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 200
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 API 端点生成 执行成功",
+        "agent": "api-generator"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:35:49.667621",
+      "completed_at": "2026-03-08T20:35:49.669844"
+    },
+    {
+      "id": "CG-03",
+      "name": "后端服务生成",
+      "agent": "service-generator-backend",
+      "status": "completed",
+      "input": {
+        "task_name": "开发用户管理模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 200
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 后端服务生成 执行成功",
+        "agent": "service-generator-backend"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:35:49.667625",
+      "completed_at": "2026-03-08T20:35:49.670461"
+    },
+    {
+      "id": "CG-04",
+      "name": "前端 API 服务层",
+      "agent": "service-generator",
+      "status": "completed",
+      "input": {
+        "task_name": "开发用户管理模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 150
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 前端 API 服务层 执行成功",
+        "agent": "service-generator"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:35:49.667628",
+      "completed_at": "2026-03-08T20:35:49.671277"
+    },
+    {
+      "id": "CG-05",
+      "name": "前端状态管理",
+      "agent": "store-generator",
+      "status": "completed",
+      "input": {
+        "task_name": "开发用户管理模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 150
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 前端状态管理 执行成功",
+        "agent": "store-generator"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:35:49.667631",
+      "completed_at": "2026-03-08T20:35:49.671677"
+    },
+    {
+      "id": "CG-06",
+      "name": "前端页面生成",
+      "agent": "page-generator",
+      "status": "completed",
+      "input": {
+        "task_name": "开发用户管理模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 200
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 前端页面生成 执行成功",
+        "agent": "page-generator"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:35:49.667634",
+      "completed_at": "2026-03-08T20:35:49.672031"
+    },
+    {
+      "id": "CG-07",
+      "name": "前端组件生成",
+      "agent": "component-generator",
+      "status": "completed",
+      "input": {
+        "task_name": "开发用户管理模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 150
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 前端组件生成 执行成功",
+        "agent": "component-generator"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:35:49.667638",
+      "completed_at": "2026-03-08T20:35:49.672407"
+    }
+  ],
+  "context": {},
+  "created_at": "2026-03-08T20:35:49.667647",
+  "updated_at": "2026-03-08T20:35:49.672879"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "report-generator",
+  "type": "operations",
+  "description": "报告生成器",
+  "max_lines": 200,
+  "output": "docs/operations/report-{date}.md"
+}

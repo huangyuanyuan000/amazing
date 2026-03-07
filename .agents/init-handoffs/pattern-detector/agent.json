@@ -1,0 +1,7 @@
+{
+  "name": "pattern-detector",
+  "type": "evolution",
+  "description": "模式检测器",
+  "max_lines": 200,
+  "output": "detected patterns"
+}

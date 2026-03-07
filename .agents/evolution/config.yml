@@ -1,0 +1,55 @@
+evolution:
+  name: "Agent 进化系统"
+  version: "1.0"
+
+  # 触发条件
+  triggers:
+    pattern_detected:
+      description: "同类任务重复 3+ 次"
+      threshold: 3
+      auto_trigger: true
+
+    failure_analysis:
+      description: "任务失败后分析原因"
+      auto_trigger: true
+
+    feedback_loop:
+      description: "人工修改产出后学习"
+      auto_trigger: true
+
+    dependency_change:
+      description: "依赖更新后评估影响"
+      auto_trigger: false
+
+  # 进化类型
+  types:
+    prompt_refinement:
+      description: "优化 Agent Prompt"
+      auto: true
+      approval: false
+
+    skill_addition:
+      description: "添加新 Skill"
+      auto: true
+      approval: true  # 需要架构师审批
+
+    agent_creation:
+      description: "创建新 Agent"
+      auto: false
+      approval: true  # 需要架构师审批
+
+    constraint_update:
+      description: "更新约束条件"
+      auto: true
+      approval: false
+
+  # 进化记录
+  history:
+    path: ".agents/evolution/history/"
+    format: "json"
+    retention_days: 365
+
+  # 可视化
+  visualization:
+    timeline: "docs/html/status/evolution-timeline.html"
+    graph: "docs/html/status/evolution-graph.html"

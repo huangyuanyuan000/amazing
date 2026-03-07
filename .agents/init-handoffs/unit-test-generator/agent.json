@@ -1,0 +1,7 @@
+{
+  "name": "unit-test-generator",
+  "type": "testing",
+  "description": "单元测试生成器",
+  "max_lines": 200,
+  "output": "tests/unit/"
+}

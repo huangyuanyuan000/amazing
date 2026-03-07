@@ -1,0 +1,7 @@
+{
+  "name": "deployment-notifier",
+  "type": "deployment",
+  "description": "部署通知器",
+  "max_lines": 200,
+  "output": "notification sent"
+}

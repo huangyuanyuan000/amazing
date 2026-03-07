@@ -1,0 +1,7 @@
+{
+  "name": "auto-checker",
+  "type": "code-review",
+  "description": "自动检查器",
+  "max_lines": 200,
+  "output": "check results"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "e2e-test-generator",
+  "type": "testing",
+  "description": "E2E 测试生成器",
+  "max_lines": 200,
+  "output": "tests/e2e/"
+}

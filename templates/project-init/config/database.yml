@@ -1,0 +1,48 @@
+database:
+  # 主数据库配置
+  primary:
+    type: postgresql  # postgresql | mysql | mongodb | sqlite
+    host: ${DB_HOST:-localhost}
+    port: ${DB_PORT:-5432}
+    name: ${DB_NAME:-amazing}
+    user: ${DB_USER:-postgres}
+    password: ${DB_PASSWORD:-postgres}
+
+    # 连接池配置
+    pool:
+      min_size: 5
+      max_size: 20
+      timeout: 30
+
+    # 其他配置
+    options:
+      echo: false  # SQL 日志
+      auto_migrate: true  # 启动时自动迁移
+
+  # 缓存数据库（可选）
+  cache:
+    type: redis
+    host: ${REDIS_HOST:-localhost}
+    port: ${REDIS_PORT:-6379}
+    db: ${REDIS_DB:-0}
+    password: ${REDIS_PASSWORD:-}
+
+  # 适配器配置
+  adapter:
+    auto_detect: true  # 自动检测 SQL 方言
+    query_log: ${QUERY_LOG:-false}  # 查询日志
+    slow_query_threshold: 1000  # 慢查询阈值（毫秒）
+
+# 数据库特定配置
+postgresql:
+  ssl_mode: prefer
+
+mysql:
+  charset: utf8mb4
+  collation: utf8mb4_unicode_ci
+
+mongodb:
+  auth_source: admin
+
+sqlite:
+  file: ${SQLITE_FILE:-./data/amazing.db}

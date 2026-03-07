@@ -1,0 +1,8 @@
+{
+  "name": "deployment-architect",
+  "type": "tech-architecture",
+  "description": "部署架构设计器",
+  "max_lines": 200,
+  "output": "docs/architecture/deployment-design.md",
+  "html_output": "docs/html/architecture/deployment-design.html"
+}

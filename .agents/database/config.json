@@ -1,0 +1,48 @@
+{
+  "agent": "database",
+  "subAgents": {
+    "schema": {
+      "role": "Schema 设计师",
+      "capabilities": ["表结构设计", "索引策略", "约束定义", "范式优化"],
+      "skills": ["database-design"],
+      "tools": ["SQLAlchemy", "Prisma", "dbdiagram.io"]
+    },
+    "migration": {
+      "role": "迁移管理员",
+      "capabilities": ["迁移脚本生成", "版本管理", "回滚脚本", "数据迁移"],
+      "skills": ["db-migration"],
+      "tools": ["Alembic", "Flyway", "Liquibase"]
+    },
+    "adapter": {
+      "role": "数据库适配器",
+      "capabilities": ["多数据库适配", "环境检测", "连接池管理", "驱动选择"],
+      "skills": ["database-design"],
+      "tools": ["SQLAlchemy", "asyncpg", "motor", "redis-py"]
+    },
+    "query": {
+      "role": "查询优化师",
+      "capabilities": ["慢查询分析", "执行计划优化", "索引建议", "查询重写"],
+      "skills": ["query-optimization"],
+      "tools": ["EXPLAIN", "pg_stat_statements", "slow_query_log"]
+    }
+  },
+  "workflows": {
+    "schema-design": {
+      "steps": [
+        {"action": "需求分析"},
+        {"action": "Schema 设计"},
+        {"action": "索引策略"},
+        {"action": "迁移脚本生成"},
+        {"action": "审核"}
+      ]
+    },
+    "query-optimization": {
+      "steps": [
+        {"action": "慢查询收集"},
+        {"action": "EXPLAIN 分析"},
+        {"action": "优化方案"},
+        {"action": "验证效果"}
+      ]
+    }
+  }
+}

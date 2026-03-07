@@ -1,0 +1,7 @@
+{
+  "name": "config-manager",
+  "type": "operations",
+  "description": "配置管理器",
+  "max_lines": 200,
+  "output": "config changes"
+}

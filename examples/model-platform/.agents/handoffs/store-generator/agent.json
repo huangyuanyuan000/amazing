@@ -1,0 +1,16 @@
+{
+  "name": "store-generator",
+  "displayName": "状态管理生成器",
+  "description": "生成单个模块的 Zustand store 代码",
+  "role": "frontend-dev",
+  "inputs": [
+    "store_name",
+    "state_fields",
+    "actions"
+  ],
+  "outputs": [
+    "store_file"
+  ],
+  "max_context": 15000,
+  "max_output_lines": 150
+}

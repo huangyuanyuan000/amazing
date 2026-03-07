@@ -1,0 +1,7 @@
+{
+  "name": "performance-test-generator",
+  "type": "testing",
+  "description": "性能测试生成器",
+  "max_lines": 200,
+  "output": "tests/performance/"
+}

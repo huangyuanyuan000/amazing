@@ -1,0 +1,46 @@
+chain: code-generation
+name: "代码开发链"
+description: "按模块逐个生成前后端代码"
+
+handoffs:
+  - id: CG-01
+    name: "数据模型生成"
+    agent: model-generator
+    per_module: true
+    max_lines: 150
+
+  - id: CG-02
+    name: "API 端点生成"
+    agent: api-generator
+    per_module: true
+    max_lines: 200
+
+  - id: CG-03
+    name: "后端服务生成"
+    agent: service-generator-backend
+    per_module: true
+    max_lines: 200
+
+  - id: CG-04
+    name: "前端 API 服务层"
+    agent: service-generator
+    per_module: true
+    max_lines: 150
+
+  - id: CG-05
+    name: "前端状态管理"
+    agent: store-generator
+    per_module: true
+    max_lines: 150
+
+  - id: CG-06
+    name: "前端页面生成"
+    agent: page-generator
+    per_module: true
+    max_lines: 200
+
+  - id: CG-07
+    name: "前端组件生成"
+    agent: component-generator
+    per_module: true
+    max_lines: 150

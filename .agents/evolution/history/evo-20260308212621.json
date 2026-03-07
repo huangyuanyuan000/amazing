@@ -1,0 +1,21 @@
+{
+  "id": "evo-20260308212621",
+  "type": "prompt_refinement",
+  "agent": "test-agent",
+  "trigger": "manual",
+  "description": "测试进化报告生成",
+  "changes": {},
+  "impact": {
+    "agent": "test-agent",
+    "change_type": "prompt_refinement",
+    "downstream_agents": [],
+    "affected_workflows": [],
+    "risk_level": "low"
+  },
+  "status": "pending",
+  "created_at": "2026-03-08T21:26:21.032163",
+  "applied_at": null,
+  "approved_by": null,
+  "approval_comment": null,
+  "rejection_reason": null
+}

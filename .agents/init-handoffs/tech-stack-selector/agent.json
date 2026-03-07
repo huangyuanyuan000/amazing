@@ -1,0 +1,8 @@
+{
+  "name": "tech-stack-selector",
+  "type": "tech-architecture",
+  "description": "技术选型决策器",
+  "max_lines": 200,
+  "output": "docs/architecture/tech-stack.md",
+  "html_output": "docs/html/architecture/tech-stack.html"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "persona-modeler",
+  "type": "product-analysis",
+  "description": "用户角色建模器",
+  "max_lines": 200,
+  "output": "docs/product/user-personas.md"
+}

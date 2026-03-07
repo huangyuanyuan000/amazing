@@ -1,0 +1,175 @@
+# IronClaw 权限配置
+
+## 权限模型
+
+### 权限级别
+- **admin**: 管理员，拥有所有权限
+- **manager**: 管理者，拥有审批和管理权限
+- **developer**: 开发者，拥有代码读写权限
+- **operator**: 操作者，拥有执行权限
+- **viewer**: 查看者，只有只读权限
+
+### 角色定义
+
+roles:
+  architect:
+    level: admin
+    permissions:
+      - all
+
+  product-manager:
+    level: manager
+    permissions:
+      read:
+        - all
+      write:
+        - docs/requirements/**
+        - docs/acceptance/**
+        - docs/product/**
+      approve:
+        - requirements
+        - features
+        - user_stories
+
+  frontend-dev:
+    level: developer
+    permissions:
+      read:
+        - docs/**
+        - src/frontend/**
+        - src/backend/api/**
+        - .agents/*/frontend/**
+      write:
+        - src/frontend/**
+        - tests/frontend/**
+        - .agents/*/frontend/**
+      create:
+        - frontend-components
+        - frontend-pages
+        - frontend-tests
+
+  backend-dev:
+    level: developer
+    permissions:
+      read:
+        - docs/**
+        - src/backend/**
+        - .agents/*/backend/**
+        - deploy/**
+      write:
+        - src/backend/**
+        - tests/backend/**
+        - .agents/*/backend/**
+      create:
+        - api-endpoints
+        - services
+        - models
+        - backend-tests
+
+  test-engineer:
+    level: developer
+    permissions:
+      read:
+        - all
+      write:
+        - tests/**
+        - .github/workflows/test-*.yml
+        - docs/testing/**
+      create:
+        - test-cases
+        - test-suites
+        - test-reports
+
+  devops-engineer:
+    level: operator
+    permissions:
+      read:
+        - all
+      write:
+        - deploy/**
+        - .github/workflows/**
+        - Makefile
+        - docker-compose.yml
+        - infra/**
+      execute:
+        - deploy
+        - rollback
+        - scale
+        - backup
+        - restore
+      create:
+        - deployment-configs
+        - ci-cd-pipelines
+        - monitoring-rules
+
+  operations:
+    level: viewer
+    permissions:
+      read:
+        - docs/**
+        - logs/**
+        - metrics/**
+        - src/frontend/**
+      write:
+        - config/operations/**
+        - docs/operations/**
+      create:
+        - reports
+        - dashboards
+        - operation-configs
+
+## 权限矩阵
+
+| 角色 | 级别 | 读取 | 写入 | 执行 | 审批 |
+|------|------|------|------|------|------|
+| 架构师 | admin | 全部 | 全部 | 全部 | 全部 |
+| 产品经理 | manager | 全部 | 需求文档 | - | 需求/功能 |
+| 前端开发 | developer | 前端相关 | 前端代码 | npm/vite | - |
+| 后端开发 | developer | 后端相关 | 后端代码 | python/pytest | - |
+| 测试工程师 | developer | 全部 | 测试代码 | 测试工具 | - |
+| 运维工程师 | operator | 全部 | 部署配置 | 部署命令 | - |
+| 运营人员 | viewer | 文档/日志 | 运营配置 | 数据分析 | - |
+
+## 权限检查规则
+
+### 文件访问
+1. 检查用户角色
+2. 检查文件路径是否在权限范围内
+3. 检查操作类型（read/write/execute）
+4. 允许或拒绝访问
+
+### 操作执行
+1. 检查用户角色
+2. 检查操作是否在权限列表中
+3. 检查操作的前置条件
+4. 允许或拒绝执行
+
+### 审批流程
+1. 只有 architect 和 manager 级别可以审批
+2. 不同类型的审批需要对应的权限
+3. 审批记录需要保存
+
+## 权限继承
+
+- admin 继承所有权限
+- manager 继承 developer 权限
+- developer 继承 viewer 权限
+
+## 特殊规则
+
+### 架构师特权
+- 唯一可以创建/修改/删除角色
+- 唯一可以调整权限边界
+- 可以临时授予其他用户权限
+
+### 紧急情况
+- 架构师可以临时提升任何人的权限
+- 紧急权限有效期最长 24 小时
+- 紧急权限使用需要记录和审计
+
+### 敏感操作
+以下操作需要架构师审批：
+- 生产环境部署
+- 数据库结构变更
+- 权限配置修改
+- 密钥和证书管理

@@ -1,0 +1,48 @@
+{
+  "agent": "evolution",
+  "subAgents": {
+    "analyzer": {
+      "role": "变更影响分析师",
+      "capabilities": ["代码变更分析", "影响范围计算", "风险评估", "兼容性检查"],
+      "skills": ["code-review", "security-audit"],
+      "tools": ["AST Parser", "Git Diff", "Dependency Graph"]
+    },
+    "tracker": {
+      "role": "依赖追踪员",
+      "capabilities": ["模块依赖分析", "服务间依赖", "Agent 间依赖", "依赖图谱维护"],
+      "skills": [],
+      "tools": ["Graph Database", "Import Analyzer"]
+    },
+    "notifier": {
+      "role": "智能通知员",
+      "capabilities": ["变更通知", "角色匹配", "通知优先级", "通知聚合"],
+      "skills": [],
+      "tools": ["Notification Engine", "Role Matcher"]
+    },
+    "learner": {
+      "role": "模式学习员",
+      "capabilities": ["模式识别", "规则提炼", "Prompt 优化", "最佳实践积累"],
+      "skills": [],
+      "tools": ["Pattern Matcher", "Prompt Optimizer"]
+    }
+  },
+  "workflows": {
+    "change-analysis": {
+      "steps": [
+        {"action": "变更检测"},
+        {"action": "依赖图查询"},
+        {"action": "影响范围计算"},
+        {"action": "风险评估"},
+        {"action": "通知推送"}
+      ]
+    },
+    "evolution-learning": {
+      "steps": [
+        {"action": "收集反馈"},
+        {"action": "模式提取"},
+        {"action": "规则更新"},
+        {"action": "效果验证"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "peer-reviewer",
+  "type": "code-review",
+  "description": "同行评审器",
+  "max_lines": 200,
+  "output": "review comments"
+}

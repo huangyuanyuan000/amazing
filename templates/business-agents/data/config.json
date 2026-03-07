@@ -1,0 +1,32 @@
+{
+  "agent": "data",
+  "subAgents": {
+    "pm": {
+      "role": "产品经理",
+      "capabilities": ["数据需求分析", "标注流程设计"],
+      "skills": ["data-requirement", "annotation-workflow"]
+    },
+    "frontend": {
+      "role": "前端开发",
+      "capabilities": ["数据标注界面", "数据集管理界面"],
+      "skills": ["annotation-ui", "dataset-management-ui"],
+      "techStack": ["React", "Canvas", "WebGL"]
+    },
+    "backend": {
+      "role": "后端开发",
+      "capabilities": ["数据处理引擎", "存储管理", "标注服务"],
+      "skills": ["data-pipeline", "storage", "annotation-service"],
+      "techStack": ["Python", "Pandas", "MinIO", "PostgreSQL"]
+    },
+    "qa": {
+      "role": "测试工程师",
+      "capabilities": ["数据质量检测", "标注准确率验证"],
+      "skills": ["data-quality-check", "annotation-validation"]
+    },
+    "ops": {
+      "role": "运维工程师",
+      "capabilities": ["存储扩容", "数据备份", "性能优化"],
+      "skills": ["storage-ops", "backup", "performance-tuning"]
+    }
+  }
+}

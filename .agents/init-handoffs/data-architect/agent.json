@@ -1,0 +1,8 @@
+{
+  "name": "data-architect",
+  "type": "tech-architecture",
+  "description": "数据架构设计器",
+  "max_lines": 200,
+  "output": "docs/architecture/data-design.md",
+  "html_output": "docs/html/architecture/data-design.html"
+}

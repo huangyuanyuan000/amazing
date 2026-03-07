@@ -1,0 +1,63 @@
+{
+  "project": "amazing",
+  "description": "大模型管理平台 - Agent-Teams 协同开发",
+  "version": "1.0.0",
+  "defaultModel": "claude-sonnet-4-5-20250929",
+  "fallbackTool": "codex",
+  "agents": {
+    "discovery": ".agents/",
+    "skills": ".skills/"
+  },
+  "roles": {
+    "architect": {
+      "name": "架构师",
+      "permissions": ["read", "write", "review", "approve", "deploy-all"],
+      "agents": ["common", "compute", "data", "training", "model-service", "review"]
+    },
+    "product-manager": {
+      "name": "产品经理",
+      "permissions": ["read", "comment", "approve-requirement"],
+      "agents": ["common", "review"]
+    },
+    "frontend-dev": {
+      "name": "前端开发",
+      "permissions": ["read", "write", "test", "deploy-dev"],
+      "agents": ["common", "model-service"],
+      "techStack": ["react", "typescript", "vite"]
+    },
+    "backend-dev": {
+      "name": "后端开发",
+      "permissions": ["read", "write", "test", "deploy-dev"],
+      "agents": ["common", "compute", "data", "training", "model-service"],
+      "techStack": ["python", "go", "fastapi"]
+    },
+    "tester": {
+      "name": "测试工程师",
+      "permissions": ["read", "test", "report-bug"],
+      "agents": ["common", "review"]
+    },
+    "devops": {
+      "name": "运维工程师",
+      "permissions": ["read", "write", "deploy-all", "infra"],
+      "agents": ["common", "compute"]
+    },
+    "operator": {
+      "name": "运营人员",
+      "permissions": ["read", "config", "data-query"],
+      "agents": ["common", "data"]
+    }
+  },
+  "conventions": {
+    "git": "conventional-commits",
+    "codeStyle": {
+      "python": "black+ruff",
+      "go": "gofmt+golangci-lint",
+      "typescript": "eslint+prettier"
+    },
+    "api": "restful-openapi3",
+    "testing": {
+      "unitCoverage": 80,
+      "integrationRequired": true
+    }
+  }
+}

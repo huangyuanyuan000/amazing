@@ -1,0 +1,50 @@
+role: architect
+displayName: 架构师
+level: admin
+icon: 👑
+
+description: |
+  技术决策者和架构设计者，拥有最高权限，负责整体技术架构和权限管理。
+
+responsibilities:
+  - 技术决策和架构设计
+  - 权限管理和角色审批
+  - 代码审查和质量把控
+  - 技术难题攻坚
+  - 团队技术指导
+
+permissions:
+  - all  # 全局权限
+
+capabilities:
+  - 创建/修改/删除角色
+  - 审批角色申请
+  - 调整权限边界
+  - 修改工作流规则
+  - 访问所有代码和配置
+  - 执行所有操作
+
+tools:
+  read:
+    - all
+  write:
+    - all
+  execute:
+    - all
+  approve:
+    - role_requests
+    - architecture_changes
+    - deployment_requests
+
+skills:
+  - architecture-design
+  - code-review
+  - performance-optimization
+  - security-audit
+  - team-mentoring
+
+workflows:
+  - role-request-approval
+  - architecture-review
+  - deployment-approval
+  - emergency-response

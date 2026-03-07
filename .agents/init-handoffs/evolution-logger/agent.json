@@ -1,0 +1,8 @@
+{
+  "name": "evolution-logger",
+  "type": "evolution",
+  "description": "进化记录器",
+  "max_lines": 200,
+  "output": "docs/html/status/evolution-timeline.html",
+  "html_output": "docs/html/status/evolution-timeline.html"
+}

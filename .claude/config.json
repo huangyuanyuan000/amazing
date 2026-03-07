@@ -1,0 +1,180 @@
+{
+  "toolchain": {
+    "priority": ["claude-code", "codex-cli", "codex-desktop"],
+    "claude-code": {
+      "enabled": true,
+      "model": "claude-sonnet-4-6",
+      "config": {
+        "temperature": 0.7,
+        "max_tokens": 4096
+      }
+    },
+    "codex-cli": {
+      "enabled": true,
+      "fallback": true,
+      "config": {
+        "model": "gpt-4",
+        "temperature": 0.7
+      }
+    },
+    "codex-desktop": {
+      "enabled": true,
+      "use_case": "visual_operations"
+    }
+  },
+  "scenarios": {
+    "feature-development": {
+      "workflow": [
+        {
+          "step": "需求分析",
+          "role": "pm",
+          "tool": "claude-code",
+          "skill": "requirement-analyzer"
+        },
+        {
+          "step": "PRD生成",
+          "role": "pm",
+          "tool": "claude-code",
+          "skill": "prd-generator"
+        },
+        {
+          "step": "架构师决策",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "architecture-design"
+        },
+        {
+          "step": "前端开发",
+          "role": "frontend",
+          "tool": "claude-code",
+          "skill": "react-component"
+        },
+        {
+          "step": "后端开发",
+          "role": "backend",
+          "tool": "claude-code",
+          "skill": "api-design"
+        },
+        {
+          "step": "架构师审查",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "code-review"
+        },
+        {
+          "step": "测试",
+          "role": "qa",
+          "tool": "claude-code",
+          "skill": "test-design"
+        },
+        {
+          "step": "架构师验收",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "security-review"
+        },
+        {
+          "step": "部署",
+          "role": "ops",
+          "tool": "claude-code",
+          "skill": "deployment"
+        }
+      ]
+    },
+    "bug-fix": {
+      "workflow": [
+        {
+          "step": "Bug复现",
+          "role": "qa",
+          "tool": "claude-code"
+        },
+        {
+          "step": "问题定位",
+          "role": "backend",
+          "tool": "claude-code"
+        },
+        {
+          "step": "架构师审查",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "code-review"
+        },
+        {
+          "step": "修复代码",
+          "role": "backend",
+          "tool": "claude-code"
+        },
+        {
+          "step": "回归测试",
+          "role": "qa",
+          "tool": "claude-code"
+        },
+        {
+          "step": "热修复部署",
+          "role": "ops",
+          "tool": "claude-code"
+        }
+      ],
+      "rollback": {
+        "enabled": true,
+        "strategy": "git-revert",
+        "notification": true
+      }
+    },
+    "requirement-analysis": {
+      "workflow": [
+        {
+          "step": "需求收集",
+          "role": "pm",
+          "tool": "claude-code"
+        },
+        {
+          "step": "需求分析",
+          "role": "pm",
+          "tool": "claude-code",
+          "skill": "requirement-analyzer"
+        },
+        {
+          "step": "PRD生成",
+          "role": "pm",
+          "tool": "claude-code",
+          "skill": "prd-generator"
+        },
+        {
+          "step": "架构师决策",
+          "role": "architect",
+          "tool": "claude-code",
+          "skill": "architecture-design"
+        },
+        {
+          "step": "技术评审",
+          "role": ["frontend", "backend"],
+          "tool": "claude-code"
+        }
+      ]
+    }
+  },
+  "evolution": {
+    "agent": {
+      "metrics": ["task_success_rate", "code_quality", "delivery_time"],
+      "threshold": {
+        "task_success_rate": 0.9,
+        "code_quality": 0.8
+      },
+      "upgrade_strategy": "incremental"
+    },
+    "sub_agent": {
+      "metrics": ["role_efficiency", "collaboration_score"],
+      "threshold": {
+        "role_efficiency": 0.85
+      }
+    },
+    "skill": {
+      "metrics": ["accuracy", "performance", "user_satisfaction"],
+      "threshold": {
+        "accuracy": 0.9
+      },
+      "version_control": true
+    }
+  }
+}

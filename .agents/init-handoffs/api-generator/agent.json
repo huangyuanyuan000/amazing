@@ -1,0 +1,16 @@
+{
+  "name": "api-generator",
+  "displayName": "API 端点生成器",
+  "description": "生成单个资源的 FastAPI CRUD 端点",
+  "role": "backend-dev",
+  "inputs": [
+    "resource_name",
+    "operations",
+    "schemas"
+  ],
+  "outputs": [
+    "api_file"
+  ],
+  "max_context": 20000,
+  "max_output_lines": 200
+}

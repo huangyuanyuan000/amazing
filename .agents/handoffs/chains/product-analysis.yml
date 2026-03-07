@@ -1,0 +1,38 @@
+chain: product-analysis
+name: "产品分析链"
+description: "从业务需求到产品规格书的完整流程"
+
+handoffs:
+  - id: PA-01
+    name: "业务领域分析"
+    agent: domain-analyzer
+    output: "docs/product/domain-analysis.md"
+    html_output: "docs/html/product/domain-analysis.html"
+    max_lines: 200
+
+  - id: PA-02
+    name: "用户角色建模"
+    agent: persona-modeler
+    output: "docs/product/user-personas.md"
+    html_output: "docs/html/product/user-personas.html"
+    max_lines: 200
+
+  - id: PA-03
+    name: "功能模块拆分"
+    agent: module-decomposer
+    output: "docs/product/module-breakdown.md"
+    html_output: "docs/html/product/module-breakdown.html"
+    max_lines: 200
+
+  - id: PA-04
+    name: "用户故事生成"
+    agent: story-generator
+    output: "docs/product/user-stories/"
+    max_lines: 150
+
+  - id: PA-05
+    name: "产品规格书"
+    agent: spec-writer
+    output: "docs/product/PRD.md"
+    html_output: "docs/html/product/PRD.html"
+    max_lines: 200

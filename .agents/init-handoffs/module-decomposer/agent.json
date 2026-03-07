@@ -1,0 +1,7 @@
+{
+  "name": "module-decomposer",
+  "type": "product-analysis",
+  "description": "功能模块拆分器",
+  "max_lines": 200,
+  "output": "docs/product/module-breakdown.md"
+}

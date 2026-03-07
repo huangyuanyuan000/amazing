@@ -1,0 +1,27 @@
+chain: deployment
+name: "部署运维链"
+description: "从部署申请到部署通知"
+
+handoffs:
+  - id: DEP-01
+    name: "部署申请与审批"
+    agent: deployment-requester
+    ironclaw_role: devops-engineer
+    max_lines: 150
+
+  - id: DEP-02
+    name: "部署执行"
+    agent: deployment-executor
+    ironclaw_role: devops-engineer
+    max_lines: 200
+
+  - id: DEP-03
+    name: "部署验证"
+    agent: deployment-verifier
+    ironclaw_role: test-engineer
+    max_lines: 150
+
+  - id: DEP-04
+    name: "部署通知"
+    agent: deployment-notifier
+    max_lines: 100

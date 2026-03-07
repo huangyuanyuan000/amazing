@@ -1,0 +1,7 @@
+{
+  "name": "architect-reviewer",
+  "type": "code-review",
+  "description": "架构师审批器",
+  "max_lines": 200,
+  "output": "approval result"
+}

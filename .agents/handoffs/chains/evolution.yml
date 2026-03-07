@@ -1,0 +1,27 @@
+chain: evolution
+name: "进化迭代链"
+description: "Agent 自我进化能力"
+
+handoffs:
+  - id: EVO-01
+    name: "模式检测"
+    agent: pattern-detector
+    trigger: "同类任务重复 3 次以上"
+    max_lines: 150
+
+  - id: EVO-02
+    name: "影响分析"
+    agent: impact-analyzer
+    max_lines: 200
+
+  - id: EVO-03
+    name: "进化执行"
+    agent: evolution-executor
+    approval: "architect"
+    max_lines: 200
+
+  - id: EVO-04
+    name: "进化记录"
+    agent: evolution-logger
+    output: "docs/html/status/evolution-timeline.html"
+    max_lines: 150

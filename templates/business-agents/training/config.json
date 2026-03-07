@@ -1,0 +1,32 @@
+{
+  "agent": "training",
+  "subAgents": {
+    "pm": {
+      "role": "产品经理",
+      "capabilities": ["训练需求规划", "实验管理"],
+      "skills": ["training-planning", "experiment-design"]
+    },
+    "frontend": {
+      "role": "前端开发",
+      "capabilities": ["实验管理界面", "训练监控面板"],
+      "skills": ["experiment-ui", "training-monitor"],
+      "techStack": ["React", "TensorBoard", "WebSocket"]
+    },
+    "backend": {
+      "role": "后端开发",
+      "capabilities": ["训练引擎", "推理服务", "模型管理"],
+      "skills": ["distributed-training", "inference-engine", "model-registry"],
+      "techStack": ["Python", "PyTorch", "TensorFlow", "Triton"]
+    },
+    "qa": {
+      "role": "测试工程师",
+      "capabilities": ["模型评测", "性能测试"],
+      "skills": ["model-evaluation", "benchmark"]
+    },
+    "ops": {
+      "role": "运维工程师",
+      "capabilities": ["训练集群管理", "GPU调度", "模型部署"],
+      "skills": ["training-cluster", "gpu-scheduling", "model-deployment"]
+    }
+  }
+}

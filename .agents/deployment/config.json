@@ -1,0 +1,50 @@
+{
+  "agent": "deployment",
+  "subAgents": {
+    "docker": {
+      "role": "Docker 部署专家",
+      "capabilities": ["Dockerfile 编写", "Compose 编排", "镜像优化", "多阶段构建"],
+      "skills": ["docker-deploy"],
+      "tools": ["Docker", "Docker Compose", "BuildKit"]
+    },
+    "k8s": {
+      "role": "Kubernetes 部署专家",
+      "capabilities": ["Manifest 生成", "Helm Chart", "HPA 配置", "Ingress 管理"],
+      "skills": ["k8s-deploy"],
+      "tools": ["kubectl", "Helm", "Kustomize"]
+    },
+    "ci-cd": {
+      "role": "CI/CD 工程师",
+      "capabilities": ["流水线配置", "自动化测试集成", "制品管理", "部署触发"],
+      "skills": ["ci-cd-pipeline"],
+      "tools": ["GitHub Actions", "GitLab CI", "ArgoCD"]
+    },
+    "env": {
+      "role": "环境管理员",
+      "capabilities": ["环境检测", "离线部署", "健康检查", "配置管理"],
+      "skills": ["monitoring-setup"],
+      "tools": ["Ansible", "Terraform", "Consul"]
+    }
+  },
+  "workflows": {
+    "standard-deploy": {
+      "steps": [
+        {"action": "构建镜像"},
+        {"action": "配置生成"},
+        {"action": "环境检查"},
+        {"action": "滚动部署"},
+        {"action": "健康检查"},
+        {"action": "通知"}
+      ]
+    },
+    "offline-deploy": {
+      "steps": [
+        {"action": "依赖打包"},
+        {"action": "镜像导出"},
+        {"action": "离线包生成"},
+        {"action": "目标环境导入"},
+        {"action": "部署验证"}
+      ]
+    }
+  }
+}

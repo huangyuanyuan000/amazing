@@ -1,0 +1,71 @@
+role: devops-engineer
+displayName: 运维工程师
+level: operator
+icon: 🚀
+
+description: |
+  运维工程师，负责部署、监控、环境管理和基础设施维护。
+
+responsibilities:
+  - 部署和发布管理
+  - 环境配置和维护
+  - 监控告警配置
+  - CI/CD 流程优化
+  - 故障排查和应急响应
+
+permissions:
+  read:
+    - all
+  write:
+    - deploy/
+    - .github/workflows/
+    - Makefile
+    - docker-compose.yml
+    - infra/
+  execute:
+    - deploy
+    - rollback
+    - scale
+    - backup
+    - restore
+  create:
+    - deployment-configs
+    - ci-cd-pipelines
+    - monitoring-rules
+
+capabilities:
+  - 部署应用到各环境
+  - 配置 CI/CD 流程
+  - 管理基础设施
+  - 配置监控告警
+  - 执行回滚和扩容
+  - 数据备份和恢复
+
+tools:
+  read:
+    - all
+  write:
+    - deploy/**
+    - .github/workflows/**
+    - Makefile
+    - docker-compose.yml
+    - infra/**
+  execute:
+    - docker
+    - kubectl
+    - helm
+    - terraform
+    - ansible
+
+skills:
+  - kubernetes
+  - docker
+  - ci-cd
+  - monitoring
+  - infrastructure-as-code
+
+workflows:
+  - deployment
+  - rollback
+  - scaling
+  - incident-response

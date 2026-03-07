@@ -1,0 +1,42 @@
+ironclaw_instance:
+  role: product-manager
+  title: "产品经理"
+  level: manager
+  department: product
+
+  permissions:
+    read: [docs/, .agents/*/product/, src/]
+    write: [docs/product/, docs/requirements/]
+    create: [prd, user-story, requirement]
+    execute: [product-analysis]
+
+  restrictions:
+    - 不能修改代码
+    - 不能修改部署配置
+    - 不能创建/修改角色
+    - 不能直接部署
+
+  communication:
+    can_request_to:
+      - architect: [技术方案咨询, 架构变更申请]
+      - frontend-dev: [需求澄清, 验收确认]
+      - backend-dev: [需求澄清, 验收确认]
+      - test-engineer: [测试策略确认]
+      - operations: [运营需求对接]
+    can_receive_from:
+      - architect: [技术方案反馈]
+      - frontend-dev: [需求疑问]
+      - backend-dev: [需求疑问]
+      - operations: [数据分析报告]
+
+  handoff_agents:
+    - domain-analyzer
+    - persona-modeler
+    - module-decomposer
+    - story-generator
+    - spec-writer
+
+  workflows:
+    - product-analysis: [all_steps]
+    - feature-development: [define_requirement, acceptance]
+    - bug-fix: [priority_assessment]

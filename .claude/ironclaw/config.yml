@@ -1,0 +1,34 @@
+ironclaw:
+  name: "IronClaw 权限治理引擎"
+  version: "2.0"
+
+  architecture:
+    mode: "per-role-instance"              # 每个角色一个独立实例
+    communication: "via-ironclaw"          # 角色间通过 IronClaw 通信
+    boundary: "strict"                     # 严格的权限边界
+
+  principles:
+    - 架构师是唯一拥有角色设定权限的角色
+    - 每个角色拥有独立的 IronClaw 实例（独立配置文件）
+    - 角色间通过 IronClaw 实例通信，不能越权直接操作
+    - 所有跨角色操作都有审计日志
+    - 权限遵循最小化原则
+    - 动态业务部门的 Agent 也需要通过 IronClaw 申请权限
+
+  governance:
+    role_creation: architect_only
+    role_assignment: approval_required
+    permission_change: architect_only
+    cross_role_communication: via_ironclaw
+    audit_log: always_enabled
+
+  instances_path: ".claude/ironclaw/instances/"
+
+  roles:
+    - architect
+    - product-manager
+    - frontend-dev
+    - backend-dev
+    - test-engineer
+    - devops-engineer
+    - operations

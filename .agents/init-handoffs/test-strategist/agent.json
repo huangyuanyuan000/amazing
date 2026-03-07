@@ -1,0 +1,7 @@
+{
+  "name": "test-strategist",
+  "type": "testing",
+  "description": "测试策略制定器",
+  "max_lines": 200,
+  "output": "docs/testing/test-strategy.md"
+}

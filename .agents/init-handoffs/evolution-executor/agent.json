@@ -1,0 +1,7 @@
+{
+  "name": "evolution-executor",
+  "type": "evolution",
+  "description": "进化执行器",
+  "max_lines": 200,
+  "output": "evolution result"
+}

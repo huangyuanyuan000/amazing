@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: model-platform-config
+  namespace: model-platform
+data:
+  # 应用配置
+  APP_NAME: "model-platform"
+  APP_ENV: "production"
+  LOG_LEVEL: "INFO"
+
+  # 数据库配置
+  DB_HOST: "postgres"
+  DB_PORT: "5432"
+  DB_NAME: "model_platform"
+
+  # Redis 配置
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+
+  # 对象存储配置
+  STORAGE_TYPE: "s3"
+  S3_ENDPOINT: "http://minio:9000"
+  S3_BUCKET: "models"
+
+  # GPU 配置
+  GPU_ENABLED: "true"
+  GPU_MEMORY_FRACTION: "0.8"
+
+  # API 配置
+  API_PREFIX: "/api/v1"
+  CORS_ORIGINS: "*"
+
+  # 训练配置
+  MAX_CONCURRENT_JOBS: "10"
+  JOB_TIMEOUT: "86400"  # 24 hours

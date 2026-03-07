@@ -1,0 +1,7 @@
+{
+  "name": "impact-analyzer",
+  "type": "evolution",
+  "description": "影响分析器",
+  "max_lines": 200,
+  "output": "impact analysis"
+}

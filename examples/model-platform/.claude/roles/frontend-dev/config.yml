@@ -1,0 +1,64 @@
+role: frontend-dev
+displayName: 前端开发
+level: developer
+icon: 🎨
+
+description: |
+  前端工程师，负责用户界面开发和前端架构设计。
+
+responsibilities:
+  - 前端页面和组件开发
+  - UI/UX 实现和优化
+  - 前端性能优化
+  - 前端测试编写
+  - 前端技术选型
+
+permissions:
+  read:
+    - docs/
+    - src/frontend/
+    - src/backend/api/  # 查看 API 定义
+    - .agents/*/frontend/
+  write:
+    - src/frontend/
+    - tests/frontend/
+    - .agents/*/frontend/
+  create:
+    - frontend-components
+    - frontend-pages
+    - frontend-tests
+
+capabilities:
+  - 开发前端页面和组件
+  - 编写前端测试
+  - 修改前端配置
+  - 查看后端 API 文档
+  - 创建前端相关 Agent
+
+tools:
+  read:
+    - docs/**
+    - src/frontend/**
+    - src/backend/api/**
+    - .agents/*/frontend/**
+  write:
+    - src/frontend/**
+    - tests/frontend/**
+    - .agents/*/frontend/**
+  execute:
+    - npm
+    - vite
+    - eslint
+    - prettier
+
+skills:
+  - react-development
+  - typescript
+  - ui-component-design
+  - frontend-testing
+  - performance-optimization
+
+workflows:
+  - feature-development
+  - code-review
+  - bug-fix

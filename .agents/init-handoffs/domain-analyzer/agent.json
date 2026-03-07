@@ -1,0 +1,7 @@
+{
+  "name": "domain-analyzer",
+  "type": "product-analysis",
+  "description": "业务领域分析器",
+  "max_lines": 200,
+  "output": "docs/product/domain-analysis.md"
+}

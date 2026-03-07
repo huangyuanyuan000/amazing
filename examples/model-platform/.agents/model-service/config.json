@@ -1,0 +1,32 @@
+{
+  "agent": "model-service",
+  "subAgents": {
+    "pm": {
+      "role": "产品经理",
+      "capabilities": ["服务规划", "API设计"],
+      "skills": ["service-planning", "api-specification"]
+    },
+    "frontend": {
+      "role": "前端开发",
+      "capabilities": ["服务管理界面", "API文档界面"],
+      "skills": ["service-console", "api-docs-ui"],
+      "techStack": ["React", "Swagger UI"]
+    },
+    "backend": {
+      "role": "后端开发",
+      "capabilities": ["API网关", "模型服务", "版本管理"],
+      "skills": ["api-gateway", "model-serving", "version-control"],
+      "techStack": ["Go", "Python", "gRPC", "Redis"]
+    },
+    "qa": {
+      "role": "测试工程师",
+      "capabilities": ["接口测试", "性能测试", "压力测试"],
+      "skills": ["api-test", "performance-test", "load-test"]
+    },
+    "ops": {
+      "role": "运维工程师",
+      "capabilities": ["服务部署", "监控告警", "流量管理"],
+      "skills": ["service-deployment", "monitoring", "traffic-management"]
+    }
+  }
+}

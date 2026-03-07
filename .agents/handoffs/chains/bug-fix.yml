@@ -1,0 +1,40 @@
+chain: bug-fix
+name: "Bug 修复链"
+description: "从 Bug 报告到热修复部署"
+
+handoffs:
+  - id: BF-01
+    name: "Bug 报告标准化"
+    agent: bug-reporter
+    output: "issues/{bug-id}.md"
+    max_lines: 150
+
+  - id: BF-02
+    name: "优先级评估"
+    agent: priority-assessor
+    ironclaw_role: product-manager
+    max_lines: 100
+
+  - id: BF-03
+    name: "根因定位"
+    agent: root-cause-analyzer
+    max_lines: 200
+
+  - id: BF-04
+    name: "修复实现"
+    agent: bug-fixer
+    ironclaw_role: [frontend-dev, backend-dev]
+    max_lines: 200
+
+  - id: BF-05
+    name: "回归测试"
+    agent: regression-tester
+    ironclaw_role: test-engineer
+    max_lines: 200
+
+  - id: BF-06
+    name: "热修复部署"
+    agent: hotfix-deployer
+    ironclaw_role: devops-engineer
+    condition: "priority == critical"
+    max_lines: 150

@@ -1,0 +1,324 @@
+# 标准工作流配置
+
+workflows:
+  # 角色申请流程
+  role-request:
+    name: 角色申请流程
+    trigger: user_request_role
+    steps:
+      - name: 提交申请
+        actor: applicant
+        action: submit_role_request
+        required_fields:
+          - role
+          - reason
+          - experience
+
+      - name: 架构师审批
+        actor: architect
+        action: review_role_request
+        options:
+          - approve
+          - reject
+          - request_more_info
+        approval_required: true
+
+      - name: 分配权限
+        actor: system
+        action: assign_permissions
+        condition: approved
+        auto_execute: true
+
+      - name: 通知结果
+        actor: system
+        action: notify
+        targets: [applicant, architect]
+        auto_execute: true
+
+  # 需求开发流程
+  feature-development:
+    name: 需求开发流程
+    trigger: new_requirement
+    steps:
+      - name: 需求定义
+        actor: product-manager
+        action: create_requirement
+        output: docs/requirements/{feature}.md
+        approval_required: false
+
+      - name: 架构设计
+        actor: architect
+        action: design_architecture
+        input: requirement
+        output: docs/architecture/{feature}.md
+        approval_required: true
+
+      - name: 任务分解
+        actor: architect
+        action: break_down_tasks
+        output: tasks/{feature}/
+        approval_required: false
+
+      - name: 前端开发
+        actor: frontend-dev
+        action: implement_frontend
+        input: tasks/{feature}/frontend/
+        output: src/frontend/
+        parallel: true
+        approval_required: false
+
+      - name: 后端开发
+        actor: backend-dev
+        action: implement_backend
+        input: tasks/{feature}/backend/
+        output: src/backend/
+        parallel: true
+        approval_required: false
+
+      - name: 集成测试
+        actor: test-engineer
+        action: integration_test
+        input: [frontend, backend]
+        output: tests/integration/{feature}/
+        approval_required: true
+
+      - name: 部署
+        actor: devops-engineer
+        action: deploy
+        condition: tests_passed
+        environments: [dev, staging, production]
+        approval_required: true
+
+      - name: 验收
+        actor: product-manager
+        action: acceptance_test
+        approval_required: true
+
+  # Bug 修复流程
+  bug-fix:
+    name: Bug 修复流程
+    trigger: bug_reported
+    steps:
+      - name: Bug 报告
+        actor: [test-engineer, operations, any]
+        action: create_bug_report
+        output: issues/{bug-id}.md
+        approval_required: false
+
+      - name: 优先级评估
+        actor: product-manager
+        action: prioritize_bug
+        options: [critical, high, medium, low]
+        approval_required: false
+
+      - name: 分配开发者
+        actor: architect
+        action: assign_developer
+        condition: priority >= medium
+        approval_required: false
+
+      - name: 修复实现
+        actor: [frontend-dev, backend-dev]
+        action: fix_bug
+        output: src/
+        approval_required: false
+
+      - name: 测试验证
+        actor: test-engineer
+        action: verify_fix
+        approval_required: true
+
+      - name: 紧急部署
+        actor: devops-engineer
+        action: hotfix_deploy
+        condition: priority == critical
+        approval_required: true
+
+  # 代码审查流程
+  code-review:
+    name: 代码审查流程
+    trigger: pull_request
+    steps:
+      - name: 提交 PR
+        actor: [frontend-dev, backend-dev]
+        action: create_pull_request
+        checks:
+          - lint_passed
+          - tests_passed
+          - coverage >= 80%
+        approval_required: false
+
+      - name: 自动检查
+        actor: system
+        action: run_ci_checks
+        checks:
+          - code_style
+          - security_scan
+          - dependency_check
+        auto_execute: true
+
+      - name: 同行评审
+        actor: [frontend-dev, backend-dev]
+        action: peer_review
+        required_approvals: 1
+        approval_required: true
+
+      - name: 架构师审批
+        actor: architect
+        action: architect_review
+        condition: changes_architecture
+        approval_required: true
+
+      - name: 合并代码
+        actor: system
+        action: merge_pr
+        condition: all_approved
+        auto_execute: true
+
+  # 部署流程
+  deployment:
+    name: 部署流程
+    trigger: deployment_request
+    steps:
+      - name: 部署申请
+        actor: [backend-dev, frontend-dev]
+        action: request_deployment
+        required_fields:
+          - environment
+          - version
+          - changes
+        approval_required: false
+
+      - name: 架构师审批
+        actor: architect
+        action: approve_deployment
+        condition: environment == production
+        approval_required: true
+
+      - name: 运维审批
+        actor: devops-engineer
+        action: approve_deployment
+        approval_required: true
+
+      - name: 执行部署
+        actor: devops-engineer
+        action: deploy
+        steps:
+          - backup_current
+          - deploy_new_version
+          - health_check
+          - rollback_if_failed
+        approval_required: false
+
+      - name: 验证部署
+        actor: test-engineer
+        action: smoke_test
+        approval_required: true
+
+      - name: 通知相关方
+        actor: system
+        action: notify
+        targets: [architect, product-manager, operations]
+        auto_execute: true
+
+  # 架构变更流程
+  architecture-change:
+    name: 架构变更流程
+    trigger: architecture_change_request
+    steps:
+      - name: 提出变更
+        actor: [architect, backend-dev, frontend-dev]
+        action: propose_architecture_change
+        output: docs/architecture/proposals/{proposal-id}.md
+        approval_required: false
+
+      - name: 影响分析
+        actor: architect
+        action: analyze_impact
+        output: docs/architecture/impact/{proposal-id}.md
+        approval_required: false
+
+      - name: 团队讨论
+        actor: [architect, product-manager, backend-dev, frontend-dev, devops-engineer]
+        action: discuss_proposal
+        approval_required: false
+
+      - name: 架构师决策
+        actor: architect
+        action: make_decision
+        options: [approve, reject, defer]
+        approval_required: true
+
+      - name: 实施计划
+        actor: architect
+        action: create_implementation_plan
+        condition: approved
+        output: docs/architecture/plans/{proposal-id}.md
+        approval_required: false
+
+      - name: 执行变更
+        actor: [backend-dev, frontend-dev, devops-engineer]
+        action: implement_change
+        input: implementation_plan
+        approval_required: false
+
+      - name: 验证变更
+        actor: test-engineer
+        action: verify_architecture_change
+        approval_required: true
+
+      - name: 更新文档
+        actor: architect
+        action: update_architecture_docs
+        approval_required: false
+
+# 审批规则
+approval_rules:
+  # 生产部署必须架构师和运维双重审批
+  production_deployment:
+    required_approvals:
+      - architect
+      - devops-engineer
+    timeout: 24h
+
+  # 架构变更必须架构师审批
+  architecture_change:
+    required_approvals:
+      - architect
+    timeout: 72h
+
+  # 代码合并需要同行评审
+  code_merge:
+    required_approvals:
+      - peer_developer: 1
+    optional_approvals:
+      - architect: 1  # 架构变更时需要
+    timeout: 48h
+
+  # Bug 修复验证需要测试工程师审批
+  bug_fix_verification:
+    required_approvals:
+      - test-engineer
+    timeout: 24h
+
+# 通知规则
+notification_rules:
+  # 角色申请通知架构师
+  role_request:
+    notify: [architect]
+    channels: [email, slack]
+
+  # 生产部署通知所有人
+  production_deployment:
+    notify: [architect, product-manager, devops-engineer, operations]
+    channels: [email, slack, sms]
+
+  # 架构变更通知相关人员
+  architecture_change:
+    notify: [architect, backend-dev, frontend-dev, devops-engineer]
+    channels: [email, slack]
+
+  # Bug 报告通知相关开发者
+  bug_report:
+    notify: [architect, assigned_developer, test-engineer]
+    channels: [email, slack]

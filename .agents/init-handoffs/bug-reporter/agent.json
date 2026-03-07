@@ -1,0 +1,7 @@
+{
+  "name": "bug-reporter",
+  "type": "bug-fix",
+  "description": "Bug 报告器",
+  "max_lines": 200,
+  "output": "issues/{bug-id}.md"
+}

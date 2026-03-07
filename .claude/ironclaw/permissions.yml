@@ -1,0 +1,174 @@
+# IronClaw 权限配置
+
+roles:
+  architect:
+    level: admin
+    permissions:
+      read: ["*"]
+      write: ["*"]
+      create: ["*"]
+      delete: ["*"]
+      approve: ["*"]
+      execute: ["*"]
+    capabilities:
+      - manage_roles
+      - manage_permissions
+      - approve_architecture
+      - approve_deployment
+      - modify_workflows
+    restrictions: []
+
+  product-manager:
+    level: manager
+    permissions:
+      read: ["*"]
+      write:
+        - docs/requirements/
+        - docs/acceptance/
+        - docs/roadmap/
+      create:
+        - requirements
+        - user-stories
+        - acceptance-criteria
+      approve:
+        - requirements
+        - features
+        - releases
+    capabilities:
+      - define_requirements
+      - acceptance_testing
+      - prioritize_features
+    restrictions:
+      - cannot_modify_code
+      - cannot_deploy
+
+  frontend-dev:
+    level: developer
+    permissions:
+      read:
+        - docs/
+        - src/frontend/
+        - src/shared/
+        - .agents/*/frontend/
+      write:
+        - src/frontend/
+        - tests/frontend/
+        - docs/frontend/
+      create:
+        - components
+        - pages
+        - styles
+        - frontend-tests
+    capabilities:
+      - implement_ui
+      - write_frontend_tests
+      - create_pull_requests
+    restrictions:
+      - cannot_modify_backend
+      - cannot_modify_infrastructure
+      - cannot_deploy_production
+
+  backend-dev:
+    level: developer
+    permissions:
+      read:
+        - docs/
+        - src/backend/
+        - src/shared/
+        - .agents/*/backend/
+      write:
+        - src/backend/
+        - tests/backend/
+        - docs/api/
+      create:
+        - api-endpoints
+        - services
+        - models
+        - backend-tests
+    capabilities:
+      - implement_api
+      - write_backend_tests
+      - create_pull_requests
+      - modify_database_schema
+    restrictions:
+      - cannot_modify_frontend
+      - cannot_modify_infrastructure
+      - cannot_deploy_production
+
+  test-engineer:
+    level: developer
+    permissions:
+      read: ["*"]
+      write:
+        - tests/
+        - .github/workflows/test-*.yml
+        - docs/testing/
+      create:
+        - test-cases
+        - test-suites
+        - test-reports
+      approve:
+        - bug-fixes
+        - test-coverage
+    capabilities:
+      - write_tests
+      - run_tests
+      - verify_fixes
+      - report_bugs
+    restrictions:
+      - cannot_modify_source_code
+      - cannot_deploy
+
+  devops-engineer:
+    level: operator
+    permissions:
+      read: ["*"]
+      write:
+        - deploy/
+        - .github/workflows/
+        - Makefile
+        - docker-compose.yml
+        - k8s/
+      create:
+        - deployment-configs
+        - ci-cd-pipelines
+        - monitoring-configs
+      execute:
+        - deploy_dev
+        - deploy_staging
+        - rollback
+        - scale
+      approve:
+        - deployment_staging
+    capabilities:
+      - manage_infrastructure
+      - configure_ci_cd
+      - monitor_systems
+      - handle_incidents
+    restrictions:
+      - cannot_deploy_production_without_approval
+      - cannot_modify_source_code
+
+  operations:
+    level: viewer
+    permissions:
+      read:
+        - docs/
+        - logs/
+        - metrics/
+        - dashboards/
+      write:
+        - config/operations/
+        - docs/operations/
+      create:
+        - reports
+        - dashboards
+        - alerts
+    capabilities:
+      - view_metrics
+      - create_reports
+      - configure_alerts
+    restrictions:
+      - cannot_modify_code
+      - cannot_deploy
+      - cannot_access_production_data

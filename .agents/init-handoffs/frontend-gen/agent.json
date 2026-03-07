@@ -1,0 +1,15 @@
+{
+  "name": "frontend-gen",
+  "displayName": "前端代码生成器",
+  "description": "生成前端界面，包括 AI 对话界面和传统表单界面",
+  "inputs": [
+    "business_agents",
+    "api_specs"
+  ],
+  "outputs": [
+    "frontend_code",
+    "routes",
+    "components"
+  ],
+  "max_context": 60000
+}

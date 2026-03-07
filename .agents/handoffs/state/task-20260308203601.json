@@ -1,0 +1,78 @@
+{
+  "task_id": "task-20260308203601",
+  "task_name": "实现用户模块",
+  "chain": "code-generation",
+  "mode": "auto",
+  "from_handoff": "CG-01",
+  "to_handoff": "CG-03",
+  "role": null,
+  "status": "completed",
+  "subtasks": [
+    {
+      "id": "CG-01",
+      "name": "数据模型生成",
+      "agent": "model-generator",
+      "status": "completed",
+      "input": {
+        "task_name": "实现用户模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 150
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 数据模型生成 执行成功",
+        "agent": "model-generator"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:36:01.200817",
+      "completed_at": "2026-03-08T20:36:01.201374"
+    },
+    {
+      "id": "CG-02",
+      "name": "API 端点生成",
+      "agent": "api-generator",
+      "status": "completed",
+      "input": {
+        "task_name": "实现用户模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 200
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 API 端点生成 执行成功",
+        "agent": "api-generator"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:36:01.200821",
+      "completed_at": "2026-03-08T20:36:01.201548"
+    },
+    {
+      "id": "CG-03",
+      "name": "后端服务生成",
+      "agent": "service-generator-backend",
+      "status": "completed",
+      "input": {
+        "task_name": "实现用户模块",
+        "context": {},
+        "output": null,
+        "html_output": null,
+        "max_lines": 200
+      },
+      "output": {
+        "status": "success",
+        "message": "子任务 后端服务生成 执行成功",
+        "agent": "service-generator-backend"
+      },
+      "error": null,
+      "created_at": "2026-03-08T20:36:01.200823",
+      "completed_at": "2026-03-08T20:36:01.201748"
+    }
+  ],
+  "context": {},
+  "created_at": "2026-03-08T20:36:01.200833",
+  "updated_at": "2026-03-08T20:36:01.202054"
+}

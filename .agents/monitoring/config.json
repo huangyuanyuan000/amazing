@@ -1,0 +1,47 @@
+{
+  "agent": "monitoring",
+  "subAgents": {
+    "log": {
+      "role": "日志管理员",
+      "capabilities": ["日志收集", "日志解析", "日志查询", "日志告警"],
+      "skills": ["monitoring-setup"],
+      "tools": ["ELK", "Loki", "Fluentd"]
+    },
+    "metrics": {
+      "role": "指标监控员",
+      "capabilities": ["指标采集", "指标存储", "指标查询", "仪表盘设计"],
+      "skills": ["monitoring-setup"],
+      "tools": ["Prometheus", "Grafana", "VictoriaMetrics"]
+    },
+    "trace": {
+      "role": "链路追踪员",
+      "capabilities": ["链路采集", "链路分析", "性能分析", "依赖分析"],
+      "skills": ["monitoring-setup"],
+      "tools": ["Jaeger", "Tempo", "OpenTelemetry"]
+    },
+    "alert": {
+      "role": "告警管理员",
+      "capabilities": ["告警规则配置", "告警路由", "告警聚合", "通知管理"],
+      "skills": ["monitoring-setup"],
+      "tools": ["Alertmanager", "PagerDuty", "Slack"]
+    }
+  },
+  "workflows": {
+    "monitoring-setup": {
+      "steps": [
+        {"action": "组件选型"},
+        {"action": "配置生成"},
+        {"action": "部署验证"},
+        {"action": "仪表盘配置"}
+      ]
+    },
+    "alert-config": {
+      "steps": [
+        {"action": "指标定义"},
+        {"action": "阈值设定"},
+        {"action": "告警路由"},
+        {"action": "测试验证"}
+      ]
+    }
+  }
+}

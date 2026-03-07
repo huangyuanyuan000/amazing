@@ -1,0 +1,77 @@
+{
+  "task_id": "backend-dev-20260308151243",
+  "task_name": "分析模板依赖并更新文档",
+  "role": "backend-dev",
+  "status": "pending",
+  "subtasks": [
+    {
+      "id": "1",
+      "name": "生成 model 数据模型",
+      "agent": "model-generator",
+      "status": "pending",
+      "input": {
+        "model_name": "Model",
+        "fields": [],
+        "relationships": []
+      },
+      "output": null,
+      "error": null,
+      "created_at": "2026-03-08T15:12:43.444512",
+      "completed_at": null
+    },
+    {
+      "id": "2",
+      "name": "生成 model API 端点",
+      "agent": "api-generator",
+      "status": "pending",
+      "input": {
+        "resource_name": "model",
+        "operations": [
+          "list",
+          "get",
+          "create",
+          "update",
+          "delete"
+        ],
+        "schemas": {}
+      },
+      "output": null,
+      "error": null,
+      "created_at": "2026-03-08T15:12:43.444520",
+      "completed_at": null
+    },
+    {
+      "id": "3",
+      "name": "生成 model 业务逻辑",
+      "agent": "service-generator-backend",
+      "status": "pending",
+      "input": {
+        "service_name": "ModelService",
+        "methods": []
+      },
+      "output": null,
+      "error": null,
+      "created_at": "2026-03-08T15:12:43.444522",
+      "completed_at": null
+    },
+    {
+      "id": "4",
+      "name": "生成 model 测试",
+      "agent": "test-generator",
+      "status": "pending",
+      "input": {
+        "test_target": "api/v1/model.py",
+        "test_cases": []
+      },
+      "output": null,
+      "error": null,
+      "created_at": "2026-03-08T15:12:43.444524",
+      "completed_at": null
+    }
+  ],
+  "context": {
+    "module": "model"
+  },
+  "created_at": "2026-03-08T15:12:43.444535",
+  "updated_at": "2026-03-08T15:12:43.444536"
+}

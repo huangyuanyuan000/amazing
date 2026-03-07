@@ -1,0 +1,356 @@
+{
+  "version": "1.0.0",
+  "mode": {
+    "current": "semi-auto",
+    "options": {
+      "full-auto": {
+        "description": "全自动AI模式：AI独立完成任务，遇到问题时人工可介入",
+        "features": [
+          "AI自主决策和执行",
+          "自动推进工作流",
+          "关键节点自动检查点",
+          "异常时暂停等待人工介入",
+          "人工可随时接管控制"
+        ],
+        "checkpoints": ["架构设计", "技术选型", "安全审查", "生产部署"],
+        "autoApprove": false,
+        "humanIntervention": "on-error"
+      },
+      "semi-auto": {
+        "description": "半自动AI模式：AI负责生成方案，人工负责决策",
+        "features": [
+          "AI生成方案和建议",
+          "人工审核和决策",
+          "人工可提供建议和想法",
+          "AI根据反馈优化方案",
+          "关键决策点必须人工确认"
+        ],
+        "requireApproval": ["架构设计", "技术选型", "代码合并", "部署发布", "安全变更"],
+        "autoApprove": false,
+        "humanIntervention": "on-decision"
+      }
+    }
+  },
+  "agents": {
+    "common": {
+      "name": "通用模块 Agent",
+      "description": "负责用户管理、权限控制、日志审计等通用功能",
+      "path": ".agents/common",
+      "roles": ["architect", "pm", "frontend", "backend", "qa", "ops", "operation"],
+      "subAgents": ["auth", "gateway", "notification", "config", "orchestrator"],
+      "skills": ["user-management", "auth", "logging", "api-design"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["code_quality", "test_coverage", "performance"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["code-generation", "test-execution", "bug-fix"],
+          "requireApproval": ["architecture-change", "security-config"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "compute": {
+      "name": "算力平台 Agent",
+      "description": "负责GPU/CPU资源调度、集群管理",
+      "path": ".agents/compute",
+      "roles": ["architect", "pm", "frontend", "backend", "qa", "ops"],
+      "subAgents": ["resource-agent", "scheduler-agent", "monitor-agent", "scaling-agent", "orchestrator"],
+      "skills": ["resource-scheduling", "cluster-management", "monitoring"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["resource_utilization", "scheduling_efficiency"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["resource-allocation", "auto-scaling"],
+          "requireApproval": ["cluster-config", "resource-limit-change"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "data": {
+      "name": "数据平台 Agent",
+      "description": "负责数据集管理、数据处理、标注工具",
+      "path": ".agents/data",
+      "roles": ["architect", "pm", "frontend", "backend", "qa", "ops"],
+      "subAgents": ["dataset-agent", "processing-agent", "annotation-agent", "quality-agent", "orchestrator"],
+      "skills": ["dataset-management", "data-processing", "annotation"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["data_quality", "processing_speed"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["data-processing", "data-validation"],
+          "requireApproval": ["data-deletion", "schema-change"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "training": {
+      "name": "训推平台 Agent",
+      "description": "负责模型训练、推理部署、实验管理",
+      "path": ".agents/training",
+      "roles": ["architect", "pm", "frontend", "backend", "qa", "ops"],
+      "subAgents": ["training-agent", "inference-agent", "experiment-agent", "tuning-agent", "orchestrator"],
+      "skills": ["model-training", "inference", "experiment-tracking"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["training_efficiency", "model_accuracy"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["training-job", "hyperparameter-tuning"],
+          "requireApproval": ["model-deployment", "production-inference"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "model-service": {
+      "name": "模型服务 Agent",
+      "description": "负责模型API服务、版本管理、监控告警",
+      "path": ".agents/model-service",
+      "roles": ["architect", "pm", "frontend", "backend", "qa", "ops"],
+      "subAgents": ["api-agent", "version-agent", "deploy-agent", "monitor-agent", "orchestrator"],
+      "skills": ["api-gateway", "version-control", "monitoring"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["api_latency", "throughput", "availability"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["api-optimization", "cache-management"],
+          "requireApproval": ["api-breaking-change", "production-deployment"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "review": {
+      "name": "审核 Agent",
+      "description": "负责代码审查、质量把控、合规检查",
+      "path": ".agents/review",
+      "subAgents": ["code-review-agent", "security-agent", "style-agent", "perf-agent", "orchestrator"],
+      "skills": ["code-review", "security-scan", "compliance-check"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["review_quality", "issue_detection_rate"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["code-scan", "security-check"],
+          "requireApproval": ["security-issue-fix", "compliance-violation"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "architect": {
+      "name": "架构师 Agent",
+      "description": "负责系统架构设计、技术选型、技术决策管理",
+      "path": ".agents/architect",
+      "subAgents": ["design-agent", "tech-selection-agent", "decision-agent", "orchestrator"],
+      "skills": ["architecture-design", "tech-selection", "api-design", "security-audit", "microservice"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["design_quality", "decision_accuracy"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["architecture-analysis", "tech-evaluation"],
+          "requireApproval": ["architecture-change", "tech-stack-change"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "database": {
+      "name": "数据库 Agent",
+      "description": "负责数据库架构设计、迁移管理、多数据库适配和查询优化",
+      "path": ".agents/database",
+      "subAgents": ["schema-agent", "migration-agent", "adapter-agent", "query-agent", "orchestrator"],
+      "skills": ["database-design", "db-migration", "query-optimization"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["query_performance", "migration_success_rate"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["query-optimization", "schema-analysis"],
+          "requireApproval": ["schema-change", "data-migration"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "deployment": {
+      "name": "部署 Agent",
+      "description": "负责多环境部署、CI/CD 流水线配置和环境管理",
+      "path": ".agents/deployment",
+      "subAgents": ["docker-agent", "k8s-agent", "ci-cd-agent", "env-agent", "orchestrator"],
+      "skills": ["docker-deploy", "k8s-deploy", "ci-cd-pipeline", "monitoring-setup"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["deployment_success_rate", "deployment_time"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["dev-deploy", "config-generation"],
+          "requireApproval": ["production-deployment", "infrastructure-change"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    },
+    "evolution": {
+      "name": "进化 Agent",
+      "description": "负责变更影响分析、依赖追踪、智能通知和模式学习",
+      "path": ".agents/evolution",
+      "subAgents": ["analyzer-agent", "tracker-agent", "notifier-agent", "learner-agent", "orchestrator"],
+      "skills": ["security-audit", "code-review"],
+      "evolution": {
+        "enabled": true,
+        "metrics": ["prediction_accuracy", "learning_effectiveness"]
+      },
+      "autonomy": {
+        "full-auto": {
+          "enabled": true,
+          "autoExecute": ["change-analysis", "dependency-tracking", "pattern-learning"],
+          "requireApproval": ["prompt-modification", "agent-creation"]
+        },
+        "semi-auto": {
+          "enabled": true,
+          "generateOnly": true,
+          "requireApproval": ["all"]
+        }
+      }
+    }
+  },
+  "orchestrator": {
+    "mode": "semi-auto",
+    "humanInteraction": {
+      "full-auto": {
+        "checkpoints": {
+          "architecture-design": {
+            "trigger": "before-implementation",
+            "action": "notify",
+            "timeout": 300,
+            "onTimeout": "proceed"
+          },
+          "security-review": {
+            "trigger": "before-deployment",
+            "action": "block",
+            "timeout": 600,
+            "onTimeout": "rollback"
+          },
+          "production-deployment": {
+            "trigger": "before-deploy",
+            "action": "block",
+            "timeout": 900,
+            "onTimeout": "cancel"
+          }
+        },
+        "errorHandling": {
+          "critical": "pause-and-notify",
+          "high": "pause-and-notify",
+          "medium": "log-and-continue",
+          "low": "log-only"
+        },
+        "humanOverride": {
+          "enabled": true,
+          "commands": ["pause", "resume", "rollback", "approve", "reject"]
+        }
+      },
+      "semi-auto": {
+        "approvalRequired": {
+          "architecture-design": {
+            "approver": ["architect"],
+            "timeout": 86400,
+            "onTimeout": "cancel"
+          },
+          "tech-selection": {
+            "approver": ["architect"],
+            "timeout": 86400,
+            "onTimeout": "cancel"
+          },
+          "code-merge": {
+            "approver": ["architect", "pm"],
+            "timeout": 43200,
+            "onTimeout": "cancel"
+          },
+          "deployment": {
+            "approver": ["architect", "ops"],
+            "timeout": 3600,
+            "onTimeout": "cancel"
+          },
+          "security-change": {
+            "approver": ["architect"],
+            "timeout": 86400,
+            "onTimeout": "cancel"
+          }
+        },
+        "feedbackLoop": {
+          "enabled": true,
+          "channels": ["comment", "suggestion", "requirement"],
+          "aiResponse": "optimize-and-regenerate"
+        }
+      }
+    },
+    "rolePermissions": {
+      "architect": ["architecture-design", "tech-solution-approve", "ui-design-review", "code-review", "security-review", "deployment-approve", "decision-make"],
+      "pm": ["prd-create", "requirement-review", "acceptance"],
+      "frontend": ["ui-develop", "component-develop"],
+      "backend": ["api-develop", "service-develop"],
+      "qa": ["test-design", "test-execute", "bug-report"],
+      "ops": ["deploy", "monitor", "troubleshoot"],
+      "operation": ["data-analysis", "config-management"]
+    },
+    "scenarios": {
+      "feature-development": ["prd", "design", "develop", "test", "deploy"],
+      "bug-fix": ["reproduce", "diagnose", "fix", "test", "deploy"],
+      "requirement-analysis": ["collect", "analyze", "prd-generate"]
+    }
+  }
+}

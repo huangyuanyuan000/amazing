@@ -1,0 +1,7 @@
+{
+  "name": "integration-test-generator",
+  "type": "testing",
+  "description": "集成测试生成器",
+  "max_lines": 200,
+  "output": "tests/integration/"
+}

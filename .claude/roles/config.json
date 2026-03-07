@@ -1,0 +1,126 @@
+{
+  "roles": {
+    "architect": {
+      "name": "架构师",
+      "permissions": [
+        "view:all",
+        "architecture:design",
+        "tech-solution:approve",
+        "ui-design:review",
+        "code:review",
+        "security:review",
+        "deployment:approve",
+        "task:assign",
+        "task:reassign",
+        "decision:make"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "architecture-design",
+        "tech-selection",
+        "api-design-spec",
+        "security-audit",
+        "microservice",
+        "code-review-checklist",
+        "decision-making"
+      ],
+      "techStack": ["System Design", "Architecture Patterns", "Code Review", "Security"]
+    },
+    "pm": {
+      "name": "产品经理",
+      "permissions": [
+        "prd:create",
+        "prd:edit",
+        "requirement:review",
+        "feature:approve",
+        "acceptance:test"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "prd-generator",
+        "requirement-analyzer",
+        "prototype-design"
+      ]
+    },
+    "frontend": {
+      "name": "前端开发",
+      "permissions": [
+        "ui:develop",
+        "component:create",
+        "style:edit",
+        "frontend:deploy"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "react-component",
+        "state-management",
+        "performance-optimization"
+      ],
+      "techStack": ["React", "TypeScript", "Vite", "TailwindCSS", "Zustand"]
+    },
+    "backend": {
+      "name": "后端开发",
+      "permissions": [
+        "api:develop",
+        "database:design",
+        "service:create",
+        "backend:deploy"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "api-design-spec",
+        "database-design",
+        "auth-implement",
+        "microservice"
+      ],
+      "techStack": ["Python", "FastAPI", "Go", "PostgreSQL", "Redis", "gRPC"]
+    },
+    "qa": {
+      "name": "测试工程师",
+      "permissions": [
+        "test:design",
+        "test:execute",
+        "bug:report",
+        "quality:review"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "test-design-methodology",
+        "test-automation",
+        "performance-test"
+      ],
+      "techStack": ["Pytest", "Jest", "Playwright", "JMeter"]
+    },
+    "ops": {
+      "name": "运维工程师",
+      "permissions": [
+        "deploy:execute",
+        "monitor:configure",
+        "troubleshoot:debug",
+        "infra:manage"
+      ],
+      "tools": ["claude-code", "codex"],
+      "skills": [
+        "docker-deploy",
+        "k8s-deploy",
+        "ci-cd-pipeline",
+        "monitoring-setup"
+      ],
+      "techStack": ["Docker", "Kubernetes", "Prometheus", "Grafana", "Helm"]
+    },
+    "operation": {
+      "name": "运营人员",
+      "permissions": [
+        "data:analyze",
+        "config:manage",
+        "user:operate"
+      ],
+      "tools": ["claude-code"],
+      "skills": [
+        "data-analysis",
+        "config-management"
+      ],
+      "techStack": ["SQL", "Python", "Jupyter"]
+    }
+  }
+}

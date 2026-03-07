@@ -1,0 +1,7 @@
+{
+  "name": "regression-tester",
+  "type": "bug-fix",
+  "description": "回归测试器",
+  "max_lines": 200,
+  "output": "regression test results"
+}

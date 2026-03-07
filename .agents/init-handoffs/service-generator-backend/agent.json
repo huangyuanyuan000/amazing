@@ -1,0 +1,16 @@
+{
+  "name": "service-generator-backend",
+  "displayName": "业务逻辑生成器",
+  "description": "生成后端业务逻辑层代码",
+  "role": "backend-dev",
+  "inputs": [
+    "service_name",
+    "methods",
+    "dependencies"
+  ],
+  "outputs": [
+    "service_file"
+  ],
+  "max_context": 20000,
+  "max_output_lines": 200
+}

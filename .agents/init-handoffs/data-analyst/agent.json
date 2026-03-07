@@ -1,0 +1,7 @@
+{
+  "name": "data-analyst",
+  "type": "operations",
+  "description": "数据分析器",
+  "max_lines": 200,
+  "output": "data analysis"
+}

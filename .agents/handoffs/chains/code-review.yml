@@ -1,0 +1,22 @@
+chain: code-review
+name: "代码审查链"
+description: "从自动检查到架构师审批"
+
+handoffs:
+  - id: CR-01
+    name: "自动检查"
+    agent: auto-checker
+    max_lines: 150
+
+  - id: CR-02
+    name: "同行评审"
+    agent: peer-reviewer
+    ironclaw_role: [frontend-dev, backend-dev]
+    max_lines: 200
+
+  - id: CR-03
+    name: "架构师审批"
+    agent: architect-reviewer
+    ironclaw_role: architect
+    condition: "changes_architecture || changes_api || changes_database"
+    max_lines: 150

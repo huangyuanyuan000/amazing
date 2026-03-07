@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing - 企业级 AI Coding 脚手架框架</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 1600px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 60px 20px; color: white; }
+        h1 { font-size: 3em; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .tagline { font-size: 1.3em; margin-bottom: 20px; opacity: 0.95; }
+        .badges { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .badge { background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.9em; backdrop-filter: blur(10px); }
+        .btn { padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s; display: inline-block; background: white; color: #667eea; margin: 0 10px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .content { background: white; border-radius: 20px; padding: 40px; margin-top: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 2em; color: #667eea; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 3px solid #667eea; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 25px; }
+        .card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 15px; color: white; transition: all 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4); }
+        .card h3 { font-size: 1.4em; margin-bottom: 12px; }
+        .card p { opacity: 0.95; line-height: 1.7; }
+        .architecture { background: #f8f9fa; padding: 30px; border-radius: 15px; margin: 30px 0; }
+        .arch-layer { background: white; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 4px solid #667eea; }
+        .arch-layer h3 { color: #667eea; margin-bottom: 12px; }
+        .arch-items { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+        .arch-item { background: #e3f2fd; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; color: #1976d2; }
+        .code-block { background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 10px; overflow-x: auto; font-family: 'Courier New', monospace; margin: 15px 0; }
+        .highlight { background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); padding: 2px 8px; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #667eea; color: white; }
+        tr:hover { background: #f5f5f5; }
+        .feature-list { list-style: none; }
+        .feature-list li { padding: 10px 0; padding-left: 30px; position: relative; }
+        .feature-list li:before { content: "✓"; position: absolute; left: 0; color: #667eea; font-weight: bold; font-size: 1.2em; }
+        footer { text-align: center; padding: 40px 20px; color: white; margin-top: 50px; }
+        .footer-links { margin: 20px 0; }
+        .footer-links a { color: white; text-decoration: none; margin: 0 15px; opacity: 0.9; }
+        .footer-links a:hover { opacity: 1; text-decoration: underline; }
+        .stats { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 30px 0; }
+        .stat { text-align: center; padding: 20px; }
+        .stat-number { font-size: 3em; font-weight: bold; color: #667eea; }
+        .stat-label { font-size: 1.1em; color: #666; margin-top: 10px; }
+        .new-badge { background: #ff6b6b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin-left: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Amazing</h1>
+            <p class="tagline">企业级 AI Coding 脚手架框架</p>
+            <p class="tagline" style="font-size: 1.1em;">一条命令初始化企业级项目 · 完整规范体系 · 全栈监控 · AI 协同开发</p>
+            <div class="badges">
+                <span class="badge">🤖 AI 原生</span>
+                <span class="badge">📋 规范完整</span>
+                <span class="badge">📊 监控完善</span>
+                <span class="badge">🧠 技能复用</span>
+                <span class="badge">🔐 权限治理</span>
+                <span class="badge">📦 开箱即用</span>
+                <span class="badge">🔄 任务拆分</span>
+            </div>
+            <div>
+                <a href="https://github.com/z58362026/amazing" class="btn" target="_blank">GitHub</a>
+                <a href="#quick-start" class="btn">快速开始</a>
+                <a href="#architecture" class="btn">架构设计</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <!-- 核心数据 -->
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">11</div>
+                    <div class="stat-label">核心 Agent</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">固定角色</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">工作流</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Skill 技能</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">业务流程</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">规范体系</div>
+                </div>
+            </div>
+
+            <!-- 核心能力 -->
+            <section class="section">
+                <h2 class="section-title">💎 核心能力</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🏗️ 架构驱动</h3>
+                        <p>基于 9 大业务流程：产品分析 → 技术架构 → 代码开发 → 测试 → 部署 → 运营 → 审查 → Bug 修复 → 进化</p>
+                    </div>
+                    <div class="card">
+                        <h3>🤖 AI 原生</h3>
+                        <p>11 个核心 Agent + 7 个固定角色 + 动态业务 Agent + Handoffs 引擎，实现完整的 AI 协同开发</p>
+                    </div>
+                    <div class="card">
+                        <h3>📋 规范完整 <span class="new-badge">NEW</span></h3>
+                        <p>内置代码/Git/API/测试完整规范体系，支持 Python/TypeScript，自动化检查</p>
+                    </div>
+                    <div class="card">
+                        <h3>📊 监控完善 <span class="new-badge">NEW</span></h3>
+                        <p>内置 Monitoring Agent（日志/指标/追踪/告警），实现全栈可观测性</p>
+                    </div>
+                    <div class="card">
+                        <h3>🧠 技能复用 <span class="new-badge">NEW</span></h3>
+                        <p>23 个 Skill 技能库，覆盖架构/开发/数据库/测试/运维/安全/运营 8 大分类，按角色权限加载</p>
+                    </div>
+                    <div class="card">
+                        <h3>🔐 权限治理</h3>
+                        <p>每个角色独立的 IronClaw 实例，严格的权限边界、约束规则和工作流</p>
+                    </div>
+                    <div class="card">
+                        <h3>📦 开箱即用</h3>
+                        <p>初始化即部署就绪：本地开发 / Docker Compose / Kubernetes / 离线私有化</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 完整架构 -->
+            <section class="section" id="architecture">
+                <h2 class="section-title">🏛️ 完整架构</h2>
+
+                <div class="architecture">
+                    <!-- 规范层 -->
+                    <div class="arch-layer">
+                        <h3>📋 规范层 (Standards) <span class="new-badge">NEW</span></h3>
+                        <p>统一的开发规范体系，支持自动化检查</p>
+                        <div class="arch-items">
+                            <span class="arch-item">代码规范 (Python/TypeScript)</span>
+                            <span class="arch-item">Git 工作流 (Git Flow + Conventional Commits)</span>
+                            <span class="arch-item">API 设计 (RESTful + OpenAPI 3.0)</span>
+                            <span class="arch-item">测试规范 (测试金字塔 + 覆盖率)</span>
+                        </div>
+                    </div>
+
+                    <!-- 角色层 -->
+                    <div class="arch-layer">
+                        <h3>👥 角色层 (Roles) <span class="new-badge">ENHANCED</span></h3>
+                        <p>7 个固定角色，每个角色包含完整的定义、约束和工作流</p>
+                        <div class="arch-items">
+                            <span class="arch-item">架构师 (3 文件: role/constraints/workflows)</span>
+                            <span class="arch-item">产品经理 (3 文件)</span>
+                            <span class="arch-item">前端开发 (3 文件)</span>
+                            <span class="arch-item">后端开发 (3 文件)</span>
+                            <span class="arch-item">测试工程师 (3 文件)</span>
+                            <span class="arch-item">运维工程师 (3 文件)</span>
+                            <span class="arch-item">运营人员 (3 文件)</span>
+                        </div>
+                    </div>
+
+                    <!-- Agent 层 -->
+                    <div class="arch-layer">
+                        <h3>🤖 Agent 层 (11 个核心 Agent)</h3>
+                        <p><strong>框架核心 Agent (6 个)</strong></p>
+                        <div class="arch-items">
+                            <span class="arch-item">Common Agent (通用模块)</span>
+                            <span class="arch-item">Review Agent (代码审查)</span>
+                            <span class="arch-item">Architect Agent (架构设计)</span>
+                            <span class="arch-item">Database Agent (数据库管理)</span>
+                            <span class="arch-item">Deployment Agent (部署管理)</span>
+                            <span class="arch-item">Evolution Agent (进化管理)</span>
+                        </div>
+                        <p style="margin-top: 15px;"><strong>监控 Agent (1 个)</strong> <span class="new-badge">NEW</span></p>
+                        <div class="arch-items">
+                            <span class="arch-item">Monitoring Agent (日志/指标/追踪/告警)</span>
+                        </div>
+                        <p style="margin-top: 15px;"><strong>业务 Agent (4 个模板，按需选择)</strong> <span class="new-badge">NEW</span></p>
+                        <div class="arch-items">
+                            <span class="arch-item">Compute Agent (算力平台)</span>
+                            <span class="arch-item">Data Agent (数据平台)</span>
+                            <span class="arch-item">Training Agent (训推平台)</span>
+                            <span class="arch-item">Model Service Agent (模型服务)</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 层 -->
+                    <div class="arch-layer">
+                        <h3>🧠 Skill 层 (23 个技能) <span class="new-badge">NEW</span></h3>
+                        <p>可复用的方法论和规范库，按角色权限加载，供 Agent 和 Handoff 调用</p>
+                        <div class="arch-items">
+                            <span class="arch-item">架构设计: architecture-design / tech-selection / api-design</span>
+                            <span class="arch-item">开发: react-component / state-management / microservice / auth-implement</span>
+                            <span class="arch-item">数据库: database-design / db-migration / query-optimization</span>
+                            <span class="arch-item">测试: test-design / test-automation / performance-test</span>
+                            <span class="arch-item">运维: docker-deploy / k8s-deploy / ci-cd-pipeline / monitoring-setup</span>
+                            <span class="arch-item">安全: security-audit / code-review-checklist</span>
+                            <span class="arch-item">运营: data-analysis / config-management</span>
+                            <span class="arch-item">初始化: init-project</span>
+                        </div>
+                        <p style="margin-top: 12px;"><strong>Commands：</strong><code>/init-role</code> 加载角色技能 · <code>/switch-tool</code> 切换 AI 工具链</p>
+                    </div>
+
+                    <!-- Sub-Agent 层 -->
+                    <div class="arch-layer">
+                        <h3>🔧 Sub-Agent 层 (29+ 个)</h3>
+                        <p>每个核心 Agent 包含 4-5 个专业 Sub-Agent</p>
+                        <div class="arch-items">
+                            <span class="arch-item">Common: auth/gateway/notification/config/orchestrator</span>
+                            <span class="arch-item">Review: code-review/security/style/perf/orchestrator</span>
+                            <span class="arch-item">Architect: design/tech-selection/decision/orchestrator</span>
+                            <span class="arch-item">Database: schema/migration/adapter/query/orchestrator</span>
+                            <span class="arch-item">Deployment: docker/k8s/ci-cd/env/orchestrator</span>
+                            <span class="arch-item">Evolution: analyzer/tracker/notifier/learner/orchestrator</span>
+                            <span class="arch-item">Monitoring: log/metrics/trace/alert/orchestrator</span>
+                        </div>
+                    </div>
+
+                    <!-- Handoffs 层 -->
+                    <div class="arch-layer">
+                        <h3>🔄 Handoffs 层 (9 条链)</h3>
+                        <p>完整的业务流程链，防止上下文溢出</p>
+                        <div class="arch-items">
+                            <span class="arch-item">1. 产品分析链</span>
+                            <span class="arch-item">2. 技术架构链</span>
+                            <span class="arch-item">3. 代码开发链</span>
+                            <span class="arch-item">4. 测试链</span>
+                            <span class="arch-item">5. 部署链</span>
+                            <span class="arch-item">6. 运营链</span>
+                            <span class="arch-item">7. 审查链</span>
+                            <span class="arch-item">8. Bug 修复链</span>
+                            <span class="arch-item">9. 进化链</span>
+                        </div>
+                    </div>
+
+                    <!-- 权限层 -->
+                    <div class="arch-layer">
+                        <h3>🔐 权限层 (IronClaw)</h3>
+                        <p>每个角色独立的权限实例，严格的权限边界</p>
+                        <div class="arch-items">
+                            <span class="arch-item">7 个角色实例</span>
+                            <span class="arch-item">权限矩阵</span>
+                            <span class="arch-item">审批流程</span>
+                            <span class="arch-item">审计日志</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 生成的项目能力 -->
+            <section class="section">
+                <h2 class="section-title">🎁 生成的项目具备的能力</h2>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">1. 完整的规范体系 <span class="new-badge">NEW</span></h3>
+                <ul class="feature-list">
+                    <li><strong>代码规范</strong>：Python (PEP 8) + TypeScript (Airbnb Style Guide)</li>
+                    <li><strong>Git 规范</strong>：Git Flow + Conventional Commits + PR 流程</li>
+                    <li><strong>API 规范</strong>：RESTful 设计 + OpenAPI 3.0 文档</li>
+                    <li><strong>测试规范</strong>：测试金字塔 + 覆盖率要求 (单元 > 80%, 集成 > 60%)</li>
+                    <li><strong>自动化检查</strong>：ESLint/Prettier/Black/Ruff/Pytest</li>
+                </ul>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">2. 全栈监控能力 <span class="new-badge">NEW</span></h3>
+                <ul class="feature-list">
+                    <li><strong>日志管理</strong>：ELK Stack / Loki + 日志格式规范</li>
+                    <li><strong>指标监控</strong>：Prometheus + Grafana + RED/USE 方法</li>
+                    <li><strong>链路追踪</strong>：Jaeger / Tempo + OpenTelemetry</li>
+                    <li><strong>告警管理</strong>：Alertmanager + 告警分级 + 值班管理</li>
+                    <li><strong>可观测性</strong>：日志/指标/追踪三位一体</li>
+                </ul>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">3. Skill 技能库 <span class="new-badge">NEW</span></h3>
+                <ul class="feature-list">
+                    <li><strong>23 个 Skill</strong>：覆盖架构/开发/数据库/测试/运维/安全/运营/初始化 8 大分类</li>
+                    <li><strong>角色绑定</strong>：按权限加载，前端只能用前端 Skill，运维只能用运维 Skill</li>
+                    <li><strong>进化能力</strong>：每个 Skill 内置指标跟踪，持续优化</li>
+                    <li><strong>Commands</strong>：/init-role 加载角色技能，/switch-tool 切换 AI 工具链</li>
+                </ul>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">4. AI 协同开发</h3>
+                <ul class="feature-list">
+                    <li><strong>7 个固定角色</strong>：架构师/产品经理/前后端/测试/运维/运营</li>
+                    <li><strong>40+ 工作流</strong>：每个角色 4-7 个专属工作流</li>
+                    <li><strong>权限治理</strong>：IronClaw 实例 + 权限边界 + 审批流程</li>
+                    <li><strong>任务拆分</strong>：Handoffs 引擎防止上下文溢出</li>
+                </ul>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">5. 多环境部署</h3>
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center;">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">本地开发</h4>
+                        <p style="font-size: 0.9em;">热重载 + 自动迁移</p>
+                        <div class="code-block" style="font-size: 0.85em;">make dev</div>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center;">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">Docker</h4>
+                        <p style="font-size: 0.9em;">一键容器化部署</p>
+                        <div class="code-block" style="font-size: 0.85em;">make docker</div>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center;">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">Kubernetes</h4>
+                        <p style="font-size: 0.9em;">生产级集群部署</p>
+                        <div class="code-block" style="font-size: 0.85em;">make k8s</div>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; text-align: center;">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">离线部署</h4>
+                        <p style="font-size: 0.9em;">私有化部署包</p>
+                        <div class="code-block" style="font-size: 0.85em;">make offline</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 快速开始 -->
+            <section class="section" id="quick-start">
+                <h2 class="section-title">🚀 快速开始</h2>
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 15px;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">1. 克隆脚手架</h3>
+                    <div class="code-block">git clone https://github.com/z58362026/amazing.git && cd amazing</div>
+
+                    <h3 style="color: #667eea; margin: 25px 0 15px 0;">2. 初始化项目</h3>
+                    <div class="code-block"># 标准项目
+python3 scripts/init.py my-project
+
+# AI 平台项目（包含所有业务 Agent）
+python3 scripts/init.py my-ai-platform \
+  --business-agents=compute,data,training,model-service
+
+# 数据平台项目
+python3 scripts/init.py my-data-platform --business-agents=data</div>
+
+                    <h3 style="color: #667eea; margin: 25px 0 15px 0;">3. 进入项目并启动</h3>
+                    <div class="code-block">cd my-project && make dev</div>
+
+                    <h3 style="color: #667eea; margin: 25px 0 15px 0;">4. 查看规范和角色</h3>
+                    <div class="code-block"># 查看代码规范
+cat standards/code/python.md
+
+# 查看角色定义
+cat .claude/roles/architect/role.md
+
+# 查看监控配置
+cat .agents/monitoring/agent.md</div>
+                </div>
+            </section>
+
+            <!-- 技术栈 -->
+            <section class="section">
+                <h2 class="section-title">🛠️ 技术栈</h2>
+                <table>
+                    <tr>
+                        <th>类别</th>
+                        <th>技术</th>
+                    </tr>
+                    <tr>
+                        <td><strong>后端</strong></td>
+                        <td>Python 3.11+ / FastAPI / Go / Gin</td>
+                    </tr>
+                    <tr>
+                        <td><strong>前端</strong></td>
+                        <td>React 18+ / TypeScript 5+ / Vite / TailwindCSS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>数据库</strong></td>
+                        <td>PostgreSQL / MongoDB / Redis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>监控</strong></td>
+                        <td>Prometheus / Grafana / ELK / Loki / Jaeger</td>
+                    </tr>
+                    <tr>
+                        <td><strong>部署</strong></td>
+                        <td>Docker / Kubernetes / Helm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CI/CD</strong></td>
+                        <td>GitHub Actions / GitLab CI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>测试</strong></td>
+                        <td>Pytest / Jest / Playwright / JMeter</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI 工具</strong></td>
+                        <td>Claude Code CLI / Codex CLI / Codex Desktop</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- 更新日志 -->
+            <section class="section">
+                <h2 class="section-title">📝 最新更新</h2>
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 15px;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">v2.0.0 (2024-03-09) <span class="new-badge">LATEST</span></h3>
+                    <ul class="feature-list">
+                        <li><strong>新增 Standards 规范体系</strong>：9 个规范文件，覆盖代码/Git/API/测试</li>
+                        <li><strong>新增 Monitoring Agent</strong>：1 agent + 5 sub-agents，实现全栈可观测性</li>
+                        <li><strong>扩展 Roles 角色体系</strong>：7 角色 × 3 文件 = 21 个文件，40+ 工作流</li>
+                        <li><strong>新增 Skill 技能库</strong>：23 个 Skill，8 大分类，按角色权限加载</li>
+                        <li><strong>业务 Agent 模板化</strong>：4 个业务 Agent 模板，支持按需选择</li>
+                        <li><strong>统一配置语义</strong>：roles + subAgents 语义明确</li>
+                        <li><strong>新增文件总数</strong>：42 个核心文件</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p style="font-size: 1.2em; margin-bottom: 15px;">Made with ❤️ by Amazing Team</p>
+            <div class="footer-links">
+                <a href="https://github.com/z58362026/amazing" target="_blank">GitHub</a> •
+                <a href="https://github.com/z58362026/amazing/blob/main/README.md" target="_blank">文档</a> •
+                <a href="mailto:305068308@qq.com">联系我们</a>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.8;">© 2024 Amazing. MIT License.</p>
+        </footer>
+    </div>
+</body>
+</html>

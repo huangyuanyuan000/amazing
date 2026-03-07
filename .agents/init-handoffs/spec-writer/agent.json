@@ -1,0 +1,7 @@
+{
+  "name": "spec-writer",
+  "type": "product-analysis",
+  "description": "产品规格书生成器",
+  "max_lines": 200,
+  "output": "docs/product/PRD.md"
+}

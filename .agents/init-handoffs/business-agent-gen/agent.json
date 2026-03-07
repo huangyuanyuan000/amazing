@@ -1,0 +1,15 @@
+{
+  "name": "business-agent-gen",
+  "displayName": "业务 Agent 生成器",
+  "description": "分析产品形态，推荐业务模块划分，生成业务 Agent 配置",
+  "inputs": [
+    "product_description",
+    "project_path"
+  ],
+  "outputs": [
+    "business_agents",
+    "tech_stack",
+    "database_config"
+  ],
+  "max_context": 50000
+}

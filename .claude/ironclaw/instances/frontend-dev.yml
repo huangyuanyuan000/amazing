@@ -1,0 +1,41 @@
+ironclaw_instance:
+  role: frontend-dev
+  title: "前端开发"
+  level: developer
+  department: engineering
+
+  permissions:
+    read: [docs/, src/frontend/, .agents/*/frontend/, tests/frontend/]
+    write: [src/frontend/, tests/frontend/]
+    create: [frontend-components, frontend-pages, frontend-services, frontend-stores]
+    execute: [lint:frontend, test:frontend, build:frontend]
+
+  restrictions:
+    - 不能修改后端代码
+    - 不能修改部署配置
+    - 不能创建/修改角色
+    - 不能审批其他角色的申请
+
+  communication:
+    can_request_to:
+      - architect: [技术方案审批, 架构变更申请]
+      - product-manager: [需求澄清, 验收确认]
+      - backend-dev: [API 联调, 接口变更协商]
+      - test-engineer: [测试用例确认, Bug 复现协助]
+      - devops-engineer: [部署申请, 环境配置请求]
+    can_receive_from:
+      - product-manager: [需求变更通知, 验收反馈]
+      - architect: [技术方案通知, 规范变更]
+      - test-engineer: [Bug 报告, 测试报告]
+
+  handoff_agents:
+    - page-generator
+    - component-generator
+    - service-generator
+    - store-generator
+
+  workflows:
+    - code-generation: [frontend_steps]
+    - bug-fix: [fix_frontend_bug]
+    - code-review: [create_pr, peer_review]
+    - testing: [assist_e2e_test]

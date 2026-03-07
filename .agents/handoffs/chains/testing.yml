@@ -1,0 +1,38 @@
+chain: testing
+name: "测试链"
+description: "从测试策略到测试报告"
+
+handoffs:
+  - id: TEST-01
+    name: "测试策略制定"
+    agent: test-strategist
+    output: "docs/testing/test-strategy.md"
+    max_lines: 200
+
+  - id: TEST-02
+    name: "单元测试生成"
+    agent: unit-test-generator
+    per_module: true
+    max_lines: 200
+
+  - id: TEST-03
+    name: "集成测试生成"
+    agent: integration-test-generator
+    max_lines: 200
+
+  - id: TEST-04
+    name: "E2E 测试生成"
+    agent: e2e-test-generator
+    max_lines: 200
+
+  - id: TEST-05
+    name: "性能测试配置"
+    agent: performance-test-generator
+    max_lines: 150
+
+  - id: TEST-06
+    name: "测试报告生成"
+    agent: test-report-generator
+    output: "docs/testing/test-report.md"
+    html_output: "docs/html/testing/test-report.html"
+    max_lines: 200

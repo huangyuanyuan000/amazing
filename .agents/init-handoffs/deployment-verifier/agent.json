@@ -1,0 +1,7 @@
+{
+  "name": "deployment-verifier",
+  "type": "deployment",
+  "description": "部署验证器",
+  "max_lines": 200,
+  "output": "verification result"
+}

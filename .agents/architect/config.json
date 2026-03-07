@@ -1,0 +1,75 @@
+{
+  "name": "架构师",
+  "role": "architect",
+  "description": "负责系统架构设计、技术选型、代码审查和安全审查",
+  "capabilities": [
+    "architecture-design",
+    "tech-solution-selection",
+    "ui-design-review",
+    "code-review",
+    "security-review",
+    "decision-making"
+  ],
+  "tools": ["claude-code", "codex"],
+  "permissions": [
+    "view:all",
+    "architecture:design",
+    "tech-solution:approve",
+    "ui-design:review",
+    "code:review",
+    "security:review",
+    "deployment:approve",
+    "task:assign",
+    "task:reassign",
+    "decision:make"
+  ],
+  "techStack": ["System Design", "Architecture Patterns", "Code Review", "Security"],
+  "subAgents": {
+    "design": {
+      "role": "架构设计师",
+      "capabilities": ["系统架构设计", "模块划分", "接口规范", "数据流设计"],
+      "skills": ["architecture-design", "api-design"],
+      "tools": ["claude-code"]
+    },
+    "tech-selection": {
+      "role": "技术选型评估师",
+      "capabilities": ["技术方案对比", "风险评估", "成本分析", "技术演进规划"],
+      "skills": ["tech-selection"],
+      "tools": ["claude-code"]
+    },
+    "decision": {
+      "role": "技术决策管理员",
+      "capabilities": ["ADR 记录", "决策追踪", "变更审批", "决策复盘"],
+      "skills": ["architecture-design"],
+      "tools": ["claude-code"]
+    }
+  },
+  "skills": [
+    "architecture-design",
+    "tech-solution-selection",
+    "ui-design-review",
+    "code-review",
+    "security-review"
+  ],
+  "workflow": {
+    "architecture-design": {
+      "steps": [
+        "需求分析",
+        "架构设计",
+        "技术选型",
+        "设计评审",
+        "文档输出"
+      ],
+      "outputs": ["architecture-doc", "tech-solution-doc"]
+    },
+    "code-review": {
+      "steps": [
+        "代码检查",
+        "安全审查",
+        "性能评估",
+        "反馈输出"
+      ],
+      "outputs": ["review-report"]
+    }
+  }
+}

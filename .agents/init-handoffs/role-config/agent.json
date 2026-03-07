@@ -1,0 +1,15 @@
+{
+  "name": "role-config",
+  "displayName": "角色配置生成器",
+  "description": "生成角色定义、IronClaw 权限配置和工作流配置",
+  "inputs": [
+    "project_path",
+    "framework_path"
+  ],
+  "outputs": [
+    "roles",
+    "permissions",
+    "workflows"
+  ],
+  "max_context": 40000
+}
