@@ -612,7 +612,7 @@ IronClaw:
 
 - **Issues**: https://github.com/z58362026/amazing/issues
 - **Discussions**: https://github.com/z58362026/amazing/discussions
-- **Email**: amazing@example.com
+- **Email**: 305068308@qq.com
 
 ---
 
