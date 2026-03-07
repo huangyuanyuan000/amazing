@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>架构师工作流 - Amazing</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .workflow-step {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .step-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .command-box {
+            background: #2d2d2d;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .role-tag {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px 5px 5px 0;
+        }
+        .architect-tag {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .tip-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .decision-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .option-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+        .option-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        .option-card.selected {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👑 架构师工作流程</h1>
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="../index.html" style="color: #667eea; text-decoration: none; font-size: 1.1em;">← 返回主页</a> |
+            <a href="development.html" style="color: #764ba2; text-decoration: none; font-size: 1.1em;">📦 开发流程</a>
+        </div>
+
+        <!-- 步骤 1 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                需求接收与理解
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <p style="margin: 15px 0;">架构师接收产品经理提交的需求，进行初步分析。</p>
+            <div class="command-box">$ claude code --role architect<br>> 查看新需求：用户管理模块</div>
+            <div class="tip-box">
+                <strong>💡 关键点：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>理解业务目标和用户价值</li>
+                    <li>识别技术约束和依赖</li>
+                    <li>评估实现复杂度</li>
+                    <li>明确验收标准</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 2 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                AI 方案生成
+            </div>
+            <div class="role-tag">AI Agent</div>
+            <p style="margin: 15px 0;">AI 基于需求自动生成多种技术方案供架构师选择。</p>
+            <div class="options-grid">
+                <div class="option-card">
+                    <h4 style="color: #667eea;">方案 A：微服务架构</h4>
+                    <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                        独立服务，易扩展，适合大规模
+                    </p>
+                </div>
+                <div class="option-card">
+                    <h4 style="color: #667eea;">方案 B：单体架构</h4>
+                    <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                        简单快速，适合快速迭代
+                    </p>
+                </div>
+                <div class="option-card">
+                    <h4 style="color: #667eea;">方案 C：混合架构</h4>
+                    <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                        核心单体+边缘微服务
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤 3 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                架构决策
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <p style="margin: 15px 0;">架构师基于经验和项目实际情况，选择最优方案。</p>
+            <div class="decision-box">
+                <strong>🎯 决策维度：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>性能要求：</strong>QPS、延迟、并发量</li>
+                    <li><strong>可扩展性：</strong>未来增长预期</li>
+                    <li><strong>团队能力：</strong>技术栈熟悉度</li>
+                    <li><strong>成本预算：</strong>开发和运维成本</li>
+                    <li><strong>时间约束：</strong>上线时间要求</li>
+                </ul>
+            </div>
+            <div class="command-box">$ claude code<br>> 我选择方案 B：单体架构<br>> 理由：团队规模小，需要快速迭代，后期可拆分</div>
+        </div>
+
+        <!-- 步骤 4 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">4</span>
+                技术栈选型
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <div class="role-tag">AI Agent</div>
+            <p style="margin: 15px 0;">AI 推荐技术栈，架构师确认或调整。</p>
+            <div class="success-box">
+                <strong>✅ AI 推荐技术栈：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>前端：</strong>React + TypeScript + Ant Design</li>
+                    <li><strong>后端：</strong>FastAPI + Python 3.11</li>
+                    <li><strong>数据库：</strong>PostgreSQL 15</li>
+                    <li><strong>缓存：</strong>Redis 7</li>
+                    <li><strong>消息队列：</strong>RabbitMQ</li>
+                </ul>
+            </div>
+            <div class="command-box">$ claude code<br>> 确认技术栈<br>> 调整：将 RabbitMQ 改为 Kafka（团队更熟悉）</div>
+        </div>
+
+        <!-- 步骤 5 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">5</span>
+                架构设计
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <p style="margin: 15px 0;">设计系统架构，包括模块划分、接口定义、数据流等。</p>
+            <div class="tip-box">
+                <strong>💡 设计内容：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>系统架构图</li>
+                    <li>模块划分和职责</li>
+                    <li>API 接口设计</li>
+                    <li>数据库表结构</li>
+                    <li>部署架构</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 6 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">6</span>
+                AI 辅助设计
+            </div>
+            <div class="role-tag">AI Agent</div>
+            <p style="margin: 15px 0;">AI 根据架构师的设计意图，自动生成详细设计文档。</p>
+            <div class="success-box">
+                <strong>✅ AI 自动生成：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>API 接口文档（OpenAPI 规范）</li>
+                    <li>数据库 DDL 脚本</li>
+                    <li>架构图（Mermaid 格式）</li>
+                    <li>部署配置文件</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 7 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">7</span>
+                设计评审
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <div class="role-tag">技术负责人</div>
+            <p style="margin: 15px 0;">组织技术评审会议，讨论架构设计。</p>
+            <div class="decision-box">
+                <strong>🎯 评审要点：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>架构合理性</li>
+                    <li>技术可行性</li>
+                    <li>性能预估</li>
+                    <li>风险识别</li>
+                    <li>成本评估</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 8 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">8</span>
+                任务分解
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <div class="role-tag">AI Agent</div>
+            <p style="margin: 15px 0;">将架构设计分解为具体开发任务。</p>
+            <div class="command-box">$ claude code<br>> 将用户管理模块分解为开发任务</div>
+            <div class="success-box">
+                <strong>✅ 任务列表：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>前端：用户列表页面</li>
+                    <li>前端：用户详情页面</li>
+                    <li>后端：用户 CRUD API</li>
+                    <li>后端：权限验证中间件</li>
+                    <li>数据库：用户表创建</li>
+                    <li>测试：单元测试</li>
+                    <li>测试：集成测试</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 9 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">9</span>
+                开发指导
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <p style="margin: 15px 0;">在开发过程中提供技术指导和问题解答。</p>
+            <div class="tip-box">
+                <strong>💡 指导内容：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>解答技术疑问</li>
+                    <li>Code Review</li>
+                    <li>性能优化建议</li>
+                    <li>架构调整决策</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 步骤 10 -->
+        <div class="workflow-step">
+            <div class="step-title">
+                <span class="step-number">10</span>
+                架构验证
+            </div>
+            <div class="role-tag architect-tag">👑 架构师</div>
+            <p style="margin: 15px 0;">验证实现是否符合架构设计。</p>
+            <div class="command-box">$ claude code<br>> 检查代码是否符合架构设计<br>> 运行架构一致性测试</div>
+            <div class="success-box">
+                <strong>✅ 验证项：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>模块依赖关系</li>
+                    <li>接口规范遵守</li>
+                    <li>性能指标达标</li>
+                    <li>安全规范落实</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div style="text-align: center; margin-top: 50px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+            <p style="color: #666;">
+                <a href="development.html">← 开发工作流</a> |
+                <a href="../architecture/system-architecture.html">系统架构 →</a>
+            </p>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+        <h3 style="color: #667eea; margin-bottom: 15px;">📞 联系我们</h3>
+        <p><strong>Email:</strong> <a href="mailto:305068308@qq.com" style="color: #667eea;">305068308@qq.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/z58362026/amazing" style="color: #667eea;">z58362026/amazing</a></p>
+    </div>
+</body>
+</html>

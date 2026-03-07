@@ -16,6 +16,7 @@ CLAUDE_DIR = AMAZING_ROOT / ".claude"
 
 # 角色关键词映射
 ROLE_KEYWORDS = {
+    "architect": ["架构", "架构师", "技术方案", "系统设计", "architecture"],
     "pm": ["产品", "需求", "prd", "产品经理", "product"],
     "frontend": ["前端", "ui", "界面", "页面", "react", "vue", "前端开发"],
     "backend": ["后端", "api", "接口", "数据库", "服务", "后端开发"],
@@ -65,7 +66,8 @@ def role_select():
 
     click.echo("\n可用角色:")
     for idx, (key, role) in enumerate(config["roles"].items(), 1):
-        click.echo(f"{idx}. {role['name']} ({key})")
+        icon = "👑" if key == "architect" else ""
+        click.echo(f"{idx}. {icon} {role['name']} ({key})")
 
     choice = click.prompt("请选择角色", type=int)
     role_key = list(config["roles"].keys())[choice - 1]
